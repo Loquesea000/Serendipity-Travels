@@ -668,7 +668,195 @@
     box-shadow: 0 0 0.5px rgba(0, 255, 255, 0.2), 0 0 1px rgba(0, 255, 255, 0.1); /* Efecto de brillo muy tenue */
 }
 
+@media (max-width: 768px) {
+    /* Cabecera */
+    #cabecera {
+        padding: 15px 20px;
+    }
 
+    .nav-tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-tabs .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 10px 15px;
+    }
+
+    /* Welcome Container */
+    .welcome-container {
+        padding: 20px;
+        margin: 15px auto;
+    }
+
+    .welcome-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Carousel */
+    #carouselContainer {
+        margin: 0 10px;
+    }
+
+    .carousel-inner img {
+        height: 300px;
+    }
+
+    .carousel-caption {
+        padding: 10px;
+        bottom: 20px;
+    }
+
+    /* Company Stats */
+    .company-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid #2a2f3f;
+        padding: 1rem;
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Valores Grid */
+    .valores-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .valor-item {
+        padding: 1.5rem;
+    }
+
+    /* Forms */
+    .form-floating > .form-control {
+        height: calc(3rem + 2px);
+        font-size: 14px;
+    }
+
+    .form-floating > label {
+        padding: 0.75rem;
+        font-size: 14px;
+    }
+
+    /* Cards */
+    .bg-dark-card {
+        margin: 10px;
+    }
+
+    .destination-badge {
+        top: -10px;
+        right: 10px;
+        font-size: 1.5em;
+        padding: 3px 10px;
+    }
+
+    /* Feature Cards */
+    .feature-card {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 20px 0;
+    }
+
+    .footer a {
+        display: block;
+        margin: 5px 0;
+        padding: 8px;
+    }
+}
+
+/* Media Queries para dispositivos muy pequeños */
+@media (max-width: 480px) {
+    .about-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .carousel-inner img {
+        height: 250px;
+    }
+
+    .welcome-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .location-badge {
+        position: static;
+        display: inline-block;
+        margin: 10px 0;
+    }
+
+    .accordion-button {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .accordion-body {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Media Queries para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .welcome-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .company-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .valores-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .carousel-inner img {
+        height: 400px;
+    }
+}
+
+/* Optimizaciones para dispositivos de alta densidad de píxeles */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo img {
+        transform: translateZ(0);
+    }
+}
+
+/* Ajustes para orientación horizontal en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .carousel-inner img {
+        height: 200px;
+    }
+
+    .nav-tabs {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .nav-tabs .nav-link {
+        width: auto;
+    }
+}
 
     </style>
 </head>
