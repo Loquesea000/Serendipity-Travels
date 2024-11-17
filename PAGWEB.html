@@ -1,0 +1,802 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serendipity Travels</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+        #cabecera {
+            background-color: #1F1F1F;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+        .nav-tabs {
+            background-color: #1F1F1F;
+            justify-content: flex-end; /* Alinea las pestañas a la derecha */
+        }
+        .nav-tabs .nav-link {
+            color: #939393; /* Color más suave para pestañas no seleccionadas */
+        }
+        .nav-tabs .nav-link:hover {
+            color: white;
+            border-color: transparent;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #343434;
+            color: #FFFFFF;
+            border-color: transparent;
+            border-bottom: 2px solid #007BFF;
+        }
+        .tab-content {
+            padding: 20px;
+            background-color: #1F1F1F;
+            border-radius: 5px;
+        }
+        .accordion-button {
+            background-color: #343434;
+            color: white;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #444444;
+        }
+        .accordion-body {
+            background-color: #1F1F1F;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .card {
+            background-color: #1F1F1F;
+            color: white;
+            height: 100%;
+        }
+          /* Nuevos estilos y modificaciones */
+          .welcome-container {
+            background-color: #2a2a2a;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-container h3 {
+            color: #007BFF;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .welcome-container p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Modificación del carrusel */
+        #carouselContainer {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-item img {
+            height: 400px; /* Altura reducida */
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 10px;
+            bottom: 20px;
+        }
+
+        .tarjeta {
+            background-color: #1F1F1F !important;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .card-text {
+            color: white !important;
+        }
+        .modal-content {
+            background-color: #1F1F1F;
+            color: white;
+        }
+        .modal-header {
+            border-bottom: 1px solid #343434;
+        }
+        .modal-footer {
+            border-top: 1px solid #343434;
+        }
+        #tourDate::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+
+/* Estilos mejorados */
+.modal-content {
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.hover-effect {
+    transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: scale(1.05);
+}
+
+.form-control {
+    border: 1px solid #444;
+}
+
+.form-floating > label {
+    padding-left: 1rem;
+    transition: all 0.3s ease; /* Agregar una transición suave */
+    background-color: transparent; /* Eliminar el fondo blanco */
+    transform: translateY(0); /* Asegura que el label no se mueva al principio */
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.5rem); /* Mueve el label hacia arriba cuando el campo tiene valor */
+    font-size: 0.875rem; /* Reduce el tamaño del texto para un mejor ajuste */
+    color: #000000; /* Opcional: cambiar color del label cuando el campo está enfocado */
+}
+
+.form-floating > .form-control {
+    padding: 1rem;
+    height: calc(3.5rem + 2px);
+    background-color: transparent; /* Eliminar el fondo blanco en el campo */
+    border: 1px solid #444;
+    color: #fff; /* Asegura que el texto del input sea blanco */
+}
+
+.form-floating > .form-control:focus {
+    border-color: #007bff; /* Cambia el borde cuando el campo está enfocado */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Agregar sombra al enfocarse */
+}
+
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+#tourDate::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.form-floating > label {
+    padding-left: 1rem;
+}
+
+.form-floating > .form-control {
+    padding: 1rem;
+    height: calc(3.5rem + 2px);
+}
+
+.bg-gradient {
+    background-size: 200% 200%;
+    animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+    </style>
+</head>
+<body>
+ 
+    <div id="cabecera">
+        <a href="#" class="logo">
+            <img src="IMAGENES/logo.jpg" alt="Logo">
+        </a>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="inicio-tab" data-bs-toggle="tab" data-bs-target="#inicio" type="button" role="tab" aria-controls="inicio" aria-selected="true">Inicio</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="nosotros-tab" data-bs-toggle="tab" data-bs-target="#nosotros" type="button" role="tab" aria-controls="nosotros" aria-selected="false">Nosotros</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tours-tab" data-bs-toggle="tab" data-bs-target="#tours" type="button" role="tab" aria-controls="tours" aria-selected="false">Tours</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="juego-tab" data-bs-toggle="tab" data-bs-target="#juego" type="button" role="tab" aria-controls="juego" aria-selected="false">info</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <!-- Sección de Inicio modificada -->
+        
+
+        <div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
+            <div class="welcome-container">
+                <h3>¡Bienvenidos a Serendipity Travels!</h3>
+                <p>En Serendipity Travels, estamos aquí para llevarte a descubrir los rincones más fascinantes del mundo de manera inesperada y maravillosa. Nuestro nombre, inspirado en la serendipia, simboliza el arte de encontrar cosas buenas sin buscarlas.</p>
+                <p>Nuestro equipo está comprometido a diseñar experiencias de viaje únicas que superen tus expectativas. Ya sea que desees explorar culturas locales, disfrutar de la naturaleza o simplemente relajarte, estamos aquí para hacer que cada paso de tu viaje esté lleno de descubrimientos asombrosos.</p>
+                <p>¡Te esperamos para comenzar la aventura en Serendipity Travels!</p>
+            </div>
+
+            <div id="carouselContainer" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="IMAGENES/fondo2.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>PIRAMIDES DE EGIPTO</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="IMAGENES/fondo3.png" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>TORRE EIFFEL</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="IMAGENES/fondo4.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>TAJ MAHAL</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="IMAGENES/fondo5.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>BOSQUE DE BAMBÚ EN ARASHIYAMA</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="IMAGENES/fondo6.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>TORRE INCLINADA DE PISA</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="IMAGENES/fondo7.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>COLISEO ROMANO</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="IMAGENES/fondo8.jpeg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>CUEVA NITRO</h5>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselContainer" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselContainer" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sección de Nosotros -->
+        <div class="tab-pane fade" id="nosotros" role="tabpanel" aria-labelledby="nosotros-tab">
+            <h1>¿Quiénes somos?</h1>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMision" aria-expanded="true" aria-controls="collapseMision">
+                            Nuestra Misión
+                        </button>
+                    </h2>
+                    <div id="collapseMision" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>En Serendipity Travels, nuestra misión es transformar la manera en que los turistas experimentan el mundo. Nos comprometemos a ofrecer viajes personalizados y auténticos que conecten profundamente con la cultura local. Buscamos crear experiencias memorables que inspiren el entendimiento intercultural y fomenten el respeto por la diversidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVision" aria-expanded="false" aria-controls="collapseVision">
+                            Nuestra Visión
+                        </button>
+                    </h2>
+                    <div id="collapseVision" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>Nuestra visión en Serendipity Travels es convertirnos en líderes de la industria turística. Aspiramos a ser reconocidos por nuestra dedicación a proporcionar experiencias enriquecedoras que promuevan la comprensión intercultural y el respeto por la diversidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseValores" aria-expanded="false" aria-controls="collapseValores">
+                            Valores Corporativos
+                        </button>
+                    </h2>
+                    <div id="collapseValores" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>En Serendipity Travels, nos guiamos por valores fundamentales que informan todas nuestras acciones y decisiones. Valoramos la autenticidad, la transparencia y el compromiso con la excelencia en todo lo que hacemos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObjetivos" aria-expanded="false" aria-controls="collapseObjetivos">
+                            Objetivos Estratégicos
+                        </button>
+                    </h2>
+                    <div id="collapseObjetivos" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Expandir nuestra presencia en nuevos destinos</li>
+                                <li>Diversificar nuestra oferta de productos y servicios</li>
+                                <li>Mantenernos a la vanguardia de la innovación</li>
+                                <li>Mejorar continuamente nuestros estándares de calidad</li>
+                                <li>Fomentar relaciones sólidas con nuestros colaboradores</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Tours -->
+        <div class="tab-pane fade" id="tours" role="tabpanel" aria-labelledby="tours-tab">
+            <h1>Nuestros Tours</h1>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <!-- Tour 1 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="IMAGENES/fondo3.png" class="card-img-top" alt="Torre Eiffel" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Torre Eiffel - Francia</h5>
+                                <p class="card-text">Descubre el símbolo más emblemático de París. Este tour incluye acceso prioritario a la torre, vistas panorámicas de la ciudad y una cena romántica en el restaurante 58 Tour Eiffel.</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tour 2 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="IMAGENES/fondo2.jpg" class="card-img-top" alt="Pirámides de Giza" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Pirámides de Giza - Egipto</h5>
+                                <p class="card-text">Explora las majestuosas pirámides del antiguo Egipto. El tour incluye visita guiada a las tres principales pirámides, el Museo Egipcio y un paseo en camello por el desierto.</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour 3 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="IMAGENES/fondo4.jpg" class="card-img-top" alt="Taj Mahal" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Taj Mahal - India</h5>
+                                <p class="card-text">Visita una de las maravillas del mundo moderno. Incluye tour al amanecer, guía experto en historia y arquitectura mogol, y experiencia fotográfica profesional.</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour 4 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="IMAGENES/fondo5.jpg" class="card-img-top" alt="Bosque de Bambú" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Bosque de Bambú de Arashiyama - Japón</h5>
+                                <p class="card-text">Sumérgete en la tranquilidad del místico bosque de bambú. El tour incluye ceremonia del té tradicional, visita a templos zen y paseo en rickshaw.</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour 5 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="IMAGENES/fondo7.jpg" class="card-img-top" alt="Coliseo Romano" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Coliseo Romano - Italia</h5>
+                                <p class="card-text">Viaja en el tiempo al antiguo Imperio Romano. Tour nocturno exclusivo, acceso a áreas restringidas y experiencia de gladiador virtual incluidos.</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour 6 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="IMAGENES/fondo6.jpg" class="card-img-top" alt="Torre de Pisa" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Torre de Pisa - Italia</h5>
+                                <p class="card-text">Visita la famosa torre inclinada y sus alrededores. Incluye subida a la torre, tour por la Plaza de los Milagros y clase de fotografía creativa.</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour 7 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="IMAGENES/fondo8.jpeg" class="card-img-top" alt="Cueva del Nitro" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Cueva del Nitro - Colombia</h5>
+                                <p class="card-text">Aventúrate en las profundidades de esta impresionante cueva. Tour de espeleología, equipo especializado y guía experto en geología incluidos.</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="juego" role="tabpanel" aria-labelledby="juego-tab">
+            <h1>VIDEO INFORMATIVO</h1>
+<div class="tarjeta" style="background-color: #ffffff; padding: 10px 5px; max-width: 800px; margin: 0 auto; border-radius: 10px; display: flex; justify-content: center;">
+    <video width="600" height="600" controls>
+        <source src="IMAGENES/avatar.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+</div>
+        </div>
+
+       
+        <h1>Información</h1>
+        <div class="tarjeta" style="background-color: #ffffff; padding: 20px; max-width: 800px; margin: 0 auto; border-radius: 10px;">
+            <p>En esta sección, encontrarás información importante sobre los destinos que ofrecemos y algunos datos interesantes que te ayudarán a planificar tu viaje con nosotros. Nuestra tabla a continuación resume algunos de los principales destinos y sus características.</p>
+            <table class="table table-custom">
+                <thead>
+                    <tr>
+                        <th>Destino</th>
+                        <th>País</th>
+                        <th>Atracción Principal</th>
+                        <th>Mejor Época para Visitar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>París</td>
+                        <td>Francia</td>
+                        <td>Torre Eiffel</td>
+                        <td>Primavera (abril-junio)</td>
+                    </tr>
+                    <tr>
+                        <td>El Cairo</td>
+                        <td>Egipto</td>
+                        <td>Pirámides de Giza</td>
+                        <td>Otoño (septiembre-noviembre)</td>
+                    </tr>
+                    <tr>
+                        <td>Agrabah</td>
+                        <td>India</td>
+                        <td>Taj Mahal</td>
+                        <td>Invierno (noviembre-febrero)</td>
+                    </tr>
+                    <tr>
+                        <td>Kioto</td>
+                        <td>Japón</td>
+                        <td>Bosque de Bambú de Arashiyama</td>
+                        <td>Primavera (marzo-mayo)</td>
+                    </tr>
+                    <tr>
+                        <td>Roma</td>
+                        <td>Italia</td>
+                        <td>Coliseo Romano</td>
+                        <td>Primavera y otoño</td>
+                    </tr>
+                    <tr>
+                        <td>Pisa</td>
+                        <td>Italia</td>
+                        <td>Torre Inclinada de Pisa</td>
+                        <td>Primavera y verano</td>
+                    </tr>
+                    <tr>
+                        <td>Zapatoca</td>
+                        <td>Colombia</td>
+                        <td>Cueva del Nitro</td>
+                        <td>Primavera Y invierno (diciembre-marzo)</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <p>Esperamos que esta información te sea útil para elegir tu próximo destino con Serendipity Travels. Nos esforzamos por ofrecerte la mejor experiencia posible, asegurándonos de que cada detalle de tu viaje esté perfectamente planeado. ¡Estamos aquí para ayudarte a crear recuerdos inolvidables!</p>
+        </div>
+
+    </div>
+   
+
+
+  <!-- Modal principal -->
+  <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark">
+            <div class="modal-header border-bottom border-secondary">
+                <h5 class="modal-title text-primary fw-bold">Selecciona tu Plan de Viaje</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Planes de viaje -->
+                <div id="plansSection" class="row g-4 mb-4">
+                    <!-- Plan Sencillo -->
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-gradient" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-primary mb-3">Plan Sencillo</h5>
+                                <h6 class="card-subtitle mb-3 text-center text-white fw-bold">$199 USD</h6>
+                                <ul class="list-unstyled text-light">
+                                    <li class="mb-2">✓ Entrada básica</li>
+                                    <li class="mb-2">✓ Guía turístico</li>
+                                    <li class="mb-2">✓ Transporte básico</li>
+                                </ul>
+                                <button onclick="selectPlan('Sencillo', 199)" class="btn btn-outline-primary w-100 mt-3 hover-effect">
+                                    Seleccionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plan Premium -->
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-gradient" style="background: linear-gradient(145deg, #2d3748, #1a202c);">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-primary mb-3">Plan Premium</h5>
+                                <h6 class="card-subtitle mb-3 text-center text-white fw-bold">$299 USD</h6>
+                                <ul class="list-unstyled text-light">
+                                    <li class="mb-2">✓ Todo lo del plan sencillo</li>
+                                    <li class="mb-2">✓ Acceso VIP</li>
+                                    <li class="mb-2">✓ Comidas incluidas</li>
+                                    <li class="mb-2">✓ Fotos profesionales</li>
+                                </ul>
+                                <button onclick="selectPlan('Premium', 299)" class="btn btn-outline-primary w-100 mt-3 hover-effect">
+                                    Seleccionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plan Platino -->
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-gradient" style="background: linear-gradient(145deg, #2b2b3c, #1a1a2c);">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-primary mb-3">Plan Platino</h5>
+                                <h6 class="card-subtitle mb-3 text-center text-white fw-bold">$499 USD</h6>
+                                <ul class="list-unstyled text-light">
+                                    <li class="mb-2">✓ Todo lo del plan premium</li>
+                                    <li class="mb-2">✓ Experiencias exclusivas</li>
+                                    <li class="mb-2">✓ Guía privado</li>
+                                    <li class="mb-2">✓ Transporte de lujo</li>
+                                    <li class="mb-2">✓ Regalo sorpresa</li>
+                                </ul>
+                                <button onclick="selectPlan('Platino', 499)" class="btn btn-outline-primary w-100 mt-3 hover-effect">
+                                    Seleccionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de registro -->
+                <div id="registrationForm" style="display: none;">
+                    <h5 class="text-primary mb-4">Información Personal</h5>
+                    <form id="bookingForm" onsubmit="submitForm(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control bg-dark text-light border-secondary" id="nombre" placeholder="Nombre completo" required>
+                                    <label for="nombre" class="text">Nombre completo</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control bg-dark text-light border-secondary" id="cedula" placeholder="Número de cédula" required>
+                                    <label for="cedula" class="text">Número de cédula</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control bg-dark text-light border-secondary" id="email" placeholder="Correo electrónico" required>
+                                    <label for="email" class="text">Correo electrónico</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="date" class="form-control bg-dark text-light border-secondary" id="tourDate" required>
+                                    <label for="tourDate" class="text">Fecha del Tour</label>
+                                </div>
+                                <small class="text-light">Disponible de miércoles a domingo</small>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100">Enviar Registro</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Resumen de la reserva -->
+                <div id="reservationSummary" style="display: none;" class="mt-4">
+                    <div class="card bg-gradient" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Resumen de tu reserva</h5>
+                            <div class="text-light">
+                                <p class="mb-2">Plan seleccionado: <span id="selectedPlan" class="fw-bold"></span></p>
+                                <p class="mb-2">Precio: $<span id="selectedPrice" class="fw-bold"></span> USD</p>
+                                <p class="mb-2">Fecha seleccionada: <span id="selectedDate" class="fw-bold"></span></p>
+                                <p class="mb-2">Nombre: <span id="summaryName" class="fw-bold"></span></p>
+                                <p class="mb-2">Cédula: <span id="summaryCedula" class="fw-bold"></span></p>
+                                <p class="mb-2">Email: <span id="summaryEmail" class="fw-bold"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-top border-secondary">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirmButton" style="display: none;" onclick="confirmReservation()">
+                    Confirmar Reserva
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header border-bottom border-secondary">
+                <h5 class="modal-title text-primary">¡Reserva Confirmada!</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-light">
+                <p>Gracias <span id="confirmationName"></span> por tu reserva.</p>
+                <p>Hemos enviado un correo a <span id="confirmationEmail"></span> con todos los detalles de tu reserva.</p>
+                <div class="card bg-gradient mt-3" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
+                    <div class="card-body">
+                        <h6 class="text-primary">Detalles de la reserva:</h6>
+                        <p class="mb-1">Plan: <span id="confirmationPlan"></span></p>
+                        <p class="mb-1">Fecha: <span id="confirmationDate"></span></p>
+                        <p class="mb-1">Total: $<span id="confirmationPrice"></span> USD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-top border-secondary">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let selectedPlanInfo = {
+    name: '',
+    price: 0
+};
+
+function selectPlan(planName, price) {
+    selectedPlanInfo.name = planName;
+    selectedPlanInfo.price = price;
+    
+    // Ocultar sección de planes y mostrar formulario
+    document.getElementById('plansSection').style.display = 'none';
+    document.getElementById('registrationForm').style.display = 'block';
+    
+    // Actualizar resumen
+    document.getElementById('selectedPlan').textContent = planName;
+    document.getElementById('selectedPrice').textContent = price;
+    
+    // Configurar fecha mínima (hoy)
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('tourDate').min = today;
+}
+
+function submitForm(event) {
+    event.preventDefault();
+    
+    const nombre = document.getElementById('nombre').value;
+    const cedula = document.getElementById('cedula').value;
+    const email = document.getElementById('email').value;
+    const date = document.getElementById('tourDate').value;
+    
+    const selected = new Date(date);
+    const day = selected.getDay();
+    
+    // Verificar si es de miércoles (3) a domingo (0)
+    if (day === 1 || day === 2) { // Lunes o Martes
+        alert('Por favor selecciona una fecha de miércoles a domingo');
+        return;
+    }
+    
+    // Actualizar resumen
+    document.getElementById('selectedDate').textContent = date;
+    document.getElementById('summaryName').textContent = nombre;
+    document.getElementById('summaryCedula').textContent = cedula;
+    document.getElementById('summaryEmail').textContent = email;
+    
+    // Ocultar formulario y mostrar resumen
+    document.getElementById('registrationForm').style.display = 'none';
+    document.getElementById('reservationSummary').style.display = 'block';
+    document.getElementById('confirmButton').style.display = 'block';
+}
+
+function confirmReservation() {
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const date = document.getElementById('tourDate').value;
+    
+    // Actualizar modal de confirmación
+    document.getElementById('confirmationName').textContent = nombre;
+    document.getElementById('confirmationEmail').textContent = email;
+    document.getElementById('confirmationPlan').textContent = selectedPlanInfo.name;
+    document.getElementById('confirmationDate').textContent = date;
+    document.getElementById('confirmationPrice').textContent = selectedPlanInfo.price;
+    
+    // Cerrar modal principal
+    const mainModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
+    mainModal.hide();
+    
+    // Mostrar modal de confirmación
+    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+    confirmationModal.show();
+    
+    // Resetear todo
+    setTimeout(() => {
+        document.getElementById('plansSection').style.display = 'block';
+        document.getElementById('registrationForm').style.display = 'none';
+        document.getElementById('reservationSummary').style.display = 'none';
+        document.getElementById('confirmButton').style.display = 'none';
+        document.getElementById('bookingForm').reset();
+    }, 500);
+}
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
