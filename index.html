@@ -681,15 +681,20 @@
         padding: 15px 20px;
     }
 
-    .nav-tabs {
-        flex-direction: column;
-        gap: 10px;
+      /* Pestañas en móviles - Hacerlas más pequeñas */
+      .nav-tabs {
+        flex-direction: row; /* Alinea las pestañas en fila */
+        gap: 5px; /* Espaciado entre pestañas */
+        justify-content: center; /* Centra las pestañas */
+        flex-wrap: wrap; /* Permite que las pestañas se ajusten si es necesario */
     }
 
     .nav-tabs .nav-link {
-        width: 100%;
+        width: auto; /* No ocupa toda la línea */
         text-align: center;
-        padding: 10px 15px;
+        padding: 8px 12px; /* Reduce el tamaño de las pestañas */
+        font-size: 0.85rem; /* Disminuye el tamaño de la fuente */
+        border-radius: 20px; /* Reduce el borde redondeado */
     }
 
     /* Welcome Container */
@@ -2019,10 +2024,10 @@
 
 <footer class="footer">
     <div>
-        © 2024 nombre de la agencia de viajes | 
+        © 2024 Serendipity Travels | 
         <span class="developers">Desarrollado por 
             <a href="#">Eduard Caro</a> y 
-            <a href="#">jeferson jerex</a>
+            <a href="#">jeferson jerez</a>
         </span>
     </div>
 </footer>
