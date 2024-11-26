@@ -1,2205 +1,2384 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serendipity Travels</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- CSS de Bootstrap -->
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #121212;
-            color: white;
-        }
-        #cabecera {
-    background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
-    padding: 20px 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-tabs {
-    border: none;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 15px;
-    padding: 10px 0;
-}
-
-.nav-tabs .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-    border: none;
-    padding: 12px 25px;
-    font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.08);
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-tabs .nav-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.1) 50%,
-        rgba(255,255,255,0) 100%);
-    transition: left 0.5s ease;
-}
-
-.nav-tabs .nav-link:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.nav-tabs .nav-link:hover::before {
-    left: 100%;
-}
-
-.nav-tabs .nav-link.active {
-    color: white;
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-    border: none;
-    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
-    font-weight: 600;
-}
-
-.nav-tabs .nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30%;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 3px;
-}
-
-/* Añadir efecto de brillo al hover */
-@keyframes shimmer {
-    0% {
-        background-position: -100% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
-}
-
-.nav-tabs .nav-link:hover {
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    background-image: linear-gradient(
-        90deg,
-        rgba(255,255,255,0.1) 0%,
-        rgba(255,255,255,0.2) 50%,
-        rgba(255,255,255,0.1) 100%
-    );
-}
-
-
-
-.logo img {
-   max-width: 100%;
-    width: auto;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.logo img:hover {
-    transform: scale(1.05);
-}
-
-
-
-/* Estilos mejorados para la sección de inicio */
-.welcome-container {
-    background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
-    padding: 40px;
-    border-radius: 20px;
-    margin: 30px auto;
-    position: relative;
-    overflow: hidden;
-    width: 100%; /* Cambiado de 1500px a porcentaje */
-    max-width: 1500px; /* Añadido max-width para controlar el tamaño máximo */
-}
-
-.welcome-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #3498db;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-size: 0.9rem;
-}
-
-.welcome-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 30px;
-}
-
-
-.welcome-text {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-}
-
-.highlight-box {
-    background: rgba(52, 152, 219, 0.1);
-    border-left: 4px solid #3498db;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 0 10px 10px 0;
-}
-
-/* Mejoras para el carrusel */
-
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    padding: 20px;
-    bottom: 40px;
-}
-
-
-#carouselContainer {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    margin: 0 auto;
-    max-width: 800px; /* Controla el ancho máximo */
-    max-height: 500px; /* Controla la altura máxima */
-}
-
-.carousel-inner {
-    max-height: 500px; /* Asegura que las imágenes no excedan esta altura */
-}
-
-.carousel-inner img {
-    object-fit: cover;
-    width: 100%;
-    height: 500px; /* Altura fija para todas las imágenes */
-}
-
-
-
-.location-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    z-index: 2;
-}
-
-/* Mejoras en los controles del carrusel */
-.carousel-control-prev,
-.carousel-control-next {
-    width: 10%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#carouselContainer:hover .carousel-control-prev,
-#carouselContainer:hover .carousel-control-next {
-    opacity: 0.8;
-}
-
-.carousel-indicators {
-    bottom: 0;
-    margin-bottom: 10px;
-}
-
-.carousel-indicators button {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin: 0 5px;
-}
-
-.location-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-}
-
-/* Estilos mejorados para la sección Nosotros */
-.about-section {
-    padding: 4rem 0;
-    background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
-    color: #ffffff;
-}
-
-.about-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.about-header h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.about-header::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
-    border-radius: 2px;
-}
-
-.company-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-    padding: 2rem;
-    background: #1e2130;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.stat-item {
-    text-align: center;
-    padding: 1.5rem;
-    border-right: 1px solid #2a2f3f;
-    transition: transform 0.3s ease;
-}
-
-.stat-item:last-child {
-    border-right: none;
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #3498db;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 1rem;
-    color: #b0b0b0;
-    text-transform: uppercase;
-}
-
-.accordion {
-    margin-top: 3rem;
-}
-
-.accordion-item {
-    background: #1e2130;
-    border: none;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    overflow: hidden;
-}
-
-.accordion-button {
-    padding: 1.5rem;
-    background: #1e2130;
-    font-weight: 600;
-    color: #ffffff;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.accordion-button:not(.collapsed) {
-    background: linear-gradient(135deg, #2a2f3f 0%, #1e2130 100%);
-    color: #3498db;
-}
-
-.accordion-button::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 4px;
-    background: linear-gradient(to bottom, #3498db, #2ecc71);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.accordion-button:not(.collapsed)::before {
-    opacity: 1;
-}
-
-.accordion-body {
-    padding: 2rem;
-    line-height: 1.6;
-    background: #1e2130;
-    color: #ffffff;
-}
-
-.valores-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 1rem;
-}
-
-.valor-item {
-    background: #1e2130;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    color: #ffffff;
-}
-
-.valor-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    background: #2a2f3f;
-}
-
-.valor-icon {
-    font-size: 2.5rem;
-    color: #3498db;
-    margin-bottom: 1rem;
-}
-
-.objetivos-list li {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    position: relative;
-    color: #ffffff;
-}
-
-.objetivos-list li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: #3498db;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-fadeIn {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Estilos mejorados */
-.modal-content {
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.hover-effect {
-    transition: all 0.3s ease;
-}
-
-.hover-effect:hover {
-    transform: scale(1.05);
-}
-
-.form-control {
-    border: 1px solid #444;
-}
-
-.form-floating > label {
-    padding-left: 1rem;
-    transition: all 0.3s ease; /* Agregar una transición suave */
-    background-color: transparent; /* Eliminar el fondo blanco */
-    transform: translateY(0); /* Asegura que el label no se mueva al principio */
-}
-
-.form-floating > .form-control:focus ~ label,
-.form-floating > .form-control:not(:placeholder-shown) ~ label {
-    transform: translateY(-1.5rem); /* Mueve el label hacia arriba cuando el campo tiene valor */
-    font-size: 0.875rem; /* Reduce el tamaño del texto para un mejor ajuste */
-    color: #000000; /* Opcional: cambiar color del label cuando el campo está enfocado */
-}
-
-.form-floating > .form-control {
-    padding: 1rem;
-    height: calc(3.5rem + 2px);
-    background-color: transparent; /* Eliminar el fondo blanco en el campo */
-    border: 1px solid #444;
-    color: #fff; /* Asegura que el texto del input sea blanco */
-}
-
-.form-floating > .form-control:focus {
-    border-color: #007bff; /* Cambia el borde cuando el campo está enfocado */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Agregar sombra al enfocarse */
-}
-
-
-.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
-}
-
-#tourDate::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-}
-
-.form-floating > label {
-    padding-left: 1rem;
-}
-
-.form-floating > .form-control {
-    padding: 1rem;
-    height: calc(3.5rem + 2px);
-}
-
-.bg-gradient {
-    background-size: 200% 200%;
-    animation: gradientAnimation 5s ease infinite;
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.bg-dark-card {
-            background: #1a1e2b;
-            border: 1px solid #2a2f3f;
-            transition: all 0.3s ease;
-        }
-
-        .hover-card-dark:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            border-color: #3498db;
-        }
-
-        .destination-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2em;
-            background: #1a1e2b;
-            padding: 5px 15px;
-            border-radius: 50%;
-            border: 1px solid #2a2f3f;
-        }
-
-        .destination-badge-sm {
-            font-size: 1.2em;
-        }
-
-        .text-light-muted {
-            color: #a0a0a0 !important;
-        }
-
-        .slide-in-left {
-            animation: slideInLeft 0.5s ease-out forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .feature-card {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            background: rgba(255,255,255,0.08);
-        }
-
-        .tips-container p {
-            margin-bottom: 10px;
-            padding: 8px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .tips-container p:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateX(5px);
-        }
-
-        .modal-content {
-            border: 1px solid #2a2f3f;
-        }
-
-        .btn-outline-primary {
-            border-color: #3498db;
-            color: #3498db;
-        }
-
-        .btn-outline-primary:hover {
-            background-color: #3498db;
-            color: white;
-        }
-        .footer {
-    background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    font-family: 'Poppins', Arial, sans-serif;
-    box-shadow: 0 -10px 20px rgba(0,0,0,0.1);
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.3) 50%,
-        rgba(255,255,255,0) 100%);
-}
-
-.footer a {
-    color: #fff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    padding: 5px 10px;
-    border-radius: 15px;
-    display: inline-block;
-}
-
-.footer a:hover {
-    color: #ffd700;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-.footer .developers {
-    font-size: 0.9em;
-    margin-top: 15px;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.border-glow {
-    border: 1px solid transparent; /* Borde extremadamente delgado */
-    border-radius: 10px;
-    background-image: linear-gradient(to right, #000, #000), linear-gradient(to right, #00f, #0ff);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    transition: 0.3s ease-in-out; /* Suavidad en la transición */
-    margin: 0 auto; /* Centra horizontalmente el elemento */
-}
-
-.border-glow:hover {
-    background-image: linear-gradient(to right, #000, #000), linear-gradient(to right, #00ffcc, #00ffee); /* Colores sutiles */
-    box-shadow: 0 0 0.5px rgba(0, 255, 255, 0.2), 0 0 1px rgba(0, 255, 255, 0.1); /* Efecto de brillo muy tenue */
-}
-
-
-
-
-@media (max-width: 768px) {
-    /* Cabecera */
-    #cabecera {
-        padding: 15px 20px;
-    }
-
-      /* Pestañas en móviles - Hacerlas más pequeñas */
-      .nav-tabs {
-        flex-direction: row; /* Alinea las pestañas en fila */
-        gap: 5px; /* Espaciado entre pestañas */
-        justify-content: center; /* Centra las pestañas */
-        flex-wrap: wrap; /* Permite que las pestañas se ajusten si es necesario */
-    }
-
-    .nav-tabs .nav-link {
-        width: auto; /* No ocupa toda la línea */
-        text-align: center;
-        padding: 8px 12px; /* Reduce el tamaño de las pestañas */
-        font-size: 0.85rem; /* Disminuye el tamaño de la fuente */
-        border-radius: 20px; /* Reduce el borde redondeado */
-    }
-
-    /* Welcome Container */
-    .welcome-container {
-        padding: 20px;
-        margin: 15px auto;
-    }
-
-    .welcome-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Carousel */
-    #carouselContainer {
-        margin: 0 10px;
-    }
-
-    .carousel-inner img {
-        height: 300px;
-    }
-
-    .carousel-caption {
-        padding: 10px;
-        bottom: 20px;
-    }
-
-    /* Company Stats */
-    .company-stats {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .stat-item {
-        border-right: none;
-        border-bottom: 1px solid #2a2f3f;
-        padding: 1rem;
-    }
-
-    .stat-item:last-child {
-        border-bottom: none;
-    }
-
-    /* Valores Grid */
-    .valores-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .valor-item {
-        padding: 1.5rem;
-    }
-
-    /* Forms */
-    .form-floating > .form-control {
-        height: calc(3rem + 2px);
-        font-size: 14px;
-    }
-
-    .form-floating > label {
-        padding: 0.75rem;
-        font-size: 14px;
-    }
-
-    /* Cards */
-    .bg-dark-card {
-        margin: 10px;
-    }
-
-    .destination-badge {
-        top: -10px;
-        right: 10px;
-        font-size: 1.5em;
-        padding: 3px 10px;
-    }
-
-    /* Feature Cards */
-    .feature-card {
-        padding: 15px;
-        margin-bottom: 10px;
-    }
-
-/* Footer ajustes para móviles */
-.footer {
-        padding: 20px 10px;
-    }
-
-    .footer .developers {
-        display: block; /* Asegura que los elementos se apilen verticalmente */
-        font-size: 0.9rem;
-        margin-top: 10px;
-        text-align: center; /* Centra el contenido */
-    }
-
-    /* Nombres de los desarrolladores */
-    .footer .developers a {
-        color: #ffd700;
-        text-decoration: none;
-        margin: 0 5px;
-    }
-
-    .footer .developers a:hover {
-        text-decoration: underline;
-    }
-}
-
-
-/* Media Queries para dispositivos muy pequeños */
-@media (max-width: 480px) {
-    .about-header h1 {
-        font-size: 1.8rem;
-    }
-
-    .stat-number {
-        font-size: 2rem;
-    }
-
-    .carousel-inner img {
-        height: 250px;
-    }
-
-    .welcome-badge {
-        position: static;
-        display: inline-block;
-        margin-bottom: 10px;
-    }
-
-    .location-badge {
-        position: static;
-        display: inline-block;
-        margin: 10px 0;
-    }
-
-    .accordion-button {
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
-
-    .accordion-body {
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
-}
-
-/* Media Queries para tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .welcome-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .company-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .valores-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .carousel-inner img {
-        height: 400px;
-    }
-}
-
-/* Optimizaciones para dispositivos de alta densidad de píxeles */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .logo img {
-        transform: translateZ(0);
-    }
-}
-
-/* Ajustes para orientación horizontal en móviles */
-@media (max-height: 500px) and (orientation: landscape) {
-    .carousel-inner img {
-        height: 200px;
-    }
-
-    .nav-tabs {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .nav-tabs .nav-link {
-        width: auto;
-    }
-}
-
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Serendipity Travels</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<!-- CSS de Bootstrap -->
+
+	<style>
+		body {
+			font-family: 'Poppins', sans-serif;
+			background-color: #121212;
+			color: white;
+		}
+
+		#cabecera {
+			background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
+			padding: 20px 40px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-tabs {
+			border: none;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			gap: 15px;
+			padding: 10px 0;
+		}
+
+		.nav-tabs .nav-link {
+			color: rgba(255, 255, 255, 0.8);
+			border: none;
+			padding: 12px 25px;
+			font-weight: 500;
+			font-size: 0.95rem;
+			letter-spacing: 0.5px;
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			border-radius: 25px;
+			background: rgba(255, 255, 255, 0.08);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.nav-tabs .nav-link::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg,
+					rgba(255, 255, 255, 0) 0%,
+					rgba(255, 255, 255, 0.1) 50%,
+					rgba(255, 255, 255, 0) 100%);
+			transition: left 0.5s ease;
+		}
+
+		.nav-tabs .nav-link:hover {
+			color: white;
+			background: rgba(255, 255, 255, 0.12);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.nav-tabs .nav-link:hover::before {
+			left: 100%;
+		}
+
+		.nav-tabs .nav-link.active {
+			color: white;
+			background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+			border: none;
+			box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
+			font-weight: 600;
+		}
+
+		.nav-tabs .nav-link.active::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 30%;
+			height: 3px;
+			background: rgba(255, 255, 255, 0.5);
+			border-radius: 3px;
+		}
+
+		/* Añadir efecto de brillo al hover */
+		@keyframes shimmer {
+			0% {
+				background-position: -100% 0;
+			}
+
+			100% {
+				background-position: 100% 0;
+			}
+		}
+
+		.nav-tabs .nav-link:hover {
+			background-size: 200% 100%;
+			animation: shimmer 1.5s infinite;
+			background-image: linear-gradient(90deg,
+					rgba(255, 255, 255, 0.1) 0%,
+					rgba(255, 255, 255, 0.2) 50%,
+					rgba(255, 255, 255, 0.1) 100%);
+		}
+
+
+
+		.logo img {
+			max-width: 100%;
+			width: auto;
+			height: auto;
+			transition: transform 0.3s ease;
+		}
+
+		.logo img:hover {
+			transform: scale(1.05);
+		}
+
+
+
+		/* Estilos mejorados para la sección de inicio */
+		.welcome-container {
+			background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
+			padding: 40px;
+			border-radius: 20px;
+			margin: 30px auto;
+			position: relative;
+			overflow: hidden;
+			width: 100%;
+			/* Cambiado de 1500px a porcentaje */
+			max-width: 1500px;
+			/* Añadido max-width para controlar el tamaño máximo */
+		}
+
+		.welcome-badge {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			background: #3498db;
+			color: white;
+			padding: 5px 15px;
+			border-radius: 15px;
+			font-size: 0.9rem;
+		}
+
+		.welcome-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 30px;
+			margin-top: 30px;
+		}
+
+
+		.welcome-text {
+			padding: 20px;
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 15px;
+		}
+
+		.highlight-box {
+			background: rgba(52, 152, 219, 0.1);
+			border-left: 4px solid #3498db;
+			padding: 15px;
+			margin: 20px 0;
+			border-radius: 0 10px 10px 0;
+		}
+
+		/* Mejoras para el carrusel */
+
+		.carousel-caption {
+			background: rgba(0, 0, 0, 0.7);
+			border-radius: 15px;
+			padding: 20px;
+			bottom: 40px;
+		}
+
+
+		#carouselContainer {
+			border-radius: 20px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+			margin: 0 auto;
+			max-width: 800px;
+			/* Controla el ancho máximo */
+			max-height: 500px;
+			/* Controla la altura máxima */
+		}
+
+		.carousel-inner {
+			max-height: 500px;
+			/* Asegura que las imágenes no excedan esta altura */
+		}
+
+		.carousel-inner img {
+			object-fit: cover;
+			width: 100%;
+			height: 500px;
+			/* Altura fija para todas las imágenes */
+		}
+
+
+
+		.location-badge {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 8px 15px;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			z-index: 2;
+		}
+
+		/* Mejoras en los controles del carrusel */
+		.carousel-control-prev,
+		.carousel-control-next {
+			width: 10%;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		#carouselContainer:hover .carousel-control-prev,
+		#carouselContainer:hover .carousel-control-next {
+			opacity: 0.8;
+		}
+
+		.carousel-indicators {
+			bottom: 0;
+			margin-bottom: 10px;
+		}
+
+		.carousel-indicators button {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			margin: 0 5px;
+		}
+
+		.location-badge {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 8px 15px;
+			border-radius: 20px;
+			font-size: 0.9rem;
+		}
+
+		/* Estilos mejorados para la sección Nosotros */
+		.about-section {
+			padding: 4rem 0;
+			background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
+			color: #ffffff;
+		}
+
+		.about-header {
+			text-align: center;
+			margin-bottom: 3rem;
+			position: relative;
+		}
+
+		.about-header h1 {
+			font-size: 2.5rem;
+			color: #ffffff;
+			margin-bottom: 1.5rem;
+			font-weight: 700;
+		}
+
+		.about-header::after {
+			content: '';
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 4px;
+			background: linear-gradient(90deg, #3498db, #2ecc71);
+			border-radius: 2px;
+		}
+
+		.company-stats {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 2rem;
+			margin: 3rem 0;
+			padding: 2rem;
+			background: #1e2130;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+		}
+
+		.stat-item {
+			text-align: center;
+			padding: 1.5rem;
+			border-right: 1px solid #2a2f3f;
+			transition: transform 0.3s ease;
+		}
+
+		.stat-item:last-child {
+			border-right: none;
+		}
+
+		.stat-item:hover {
+			transform: translateY(-5px);
+		}
+
+		.stat-number {
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: #3498db;
+			margin-bottom: 0.5rem;
+		}
+
+		.stat-label {
+			font-size: 1rem;
+			color: #b0b0b0;
+			text-transform: uppercase;
+		}
+
+		.accordion {
+			margin-top: 3rem;
+		}
+
+		.accordion-item {
+			background: #1e2130;
+			border: none;
+			margin-bottom: 1rem;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+			overflow: hidden;
+		}
+
+		.accordion-button {
+			padding: 1.5rem;
+			background: #1e2130;
+			font-weight: 600;
+			color: #ffffff;
+			position: relative;
+			transition: all 0.3s ease;
+		}
+
+		.accordion-button:not(.collapsed) {
+			background: linear-gradient(135deg, #2a2f3f 0%, #1e2130 100%);
+			color: #3498db;
+		}
+
+		.accordion-button::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 4px;
+			background: linear-gradient(to bottom, #3498db, #2ecc71);
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.accordion-button:not(.collapsed)::before {
+			opacity: 1;
+		}
+
+		.accordion-body {
+			padding: 2rem;
+			line-height: 1.6;
+			background: #1e2130;
+			color: #ffffff;
+		}
+
+		.valores-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			margin-top: 1rem;
+		}
+
+		.valor-item {
+			background: #1e2130;
+			padding: 2rem;
+			border-radius: 10px;
+			text-align: center;
+			transition: all 0.3s ease;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+			color: #ffffff;
+		}
+
+		.valor-item:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+			background: #2a2f3f;
+		}
+
+		.valor-icon {
+			font-size: 2.5rem;
+			color: #3498db;
+			margin-bottom: 1rem;
+		}
+
+		.objetivos-list li {
+			margin-bottom: 1rem;
+			padding-left: 1.5rem;
+			position: relative;
+			color: #ffffff;
+		}
+
+		.objetivos-list li::before {
+			content: '→';
+			position: absolute;
+			left: 0;
+			color: #3498db;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.animate-fadeIn {
+			animation: fadeInUp 0.6s ease forwards;
+		}
+
+		/* Estilos mejorados */
+		.modal-content {
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+
+		.card {
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			border: none;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+		}
+
+		.hover-effect {
+			transition: all 0.3s ease;
+		}
+
+		.hover-effect:hover {
+			transform: scale(1.05);
+		}
+
+		.form-control {
+			border: 1px solid #444;
+		}
+
+		.form-floating>label {
+			padding-left: 1rem;
+			transition: all 0.3s ease;
+			/* Agregar una transición suave */
+			background-color: transparent;
+			/* Eliminar el fondo blanco */
+			transform: translateY(0);
+			/* Asegura que el label no se mueva al principio */
+		}
+
+		.form-floating>.form-control:focus~label,
+		.form-floating>.form-control:not(:placeholder-shown)~label {
+			transform: translateY(-1.5rem);
+			/* Mueve el label hacia arriba cuando el campo tiene valor */
+			font-size: 0.875rem;
+			/* Reduce el tamaño del texto para un mejor ajuste */
+			color: #000000;
+			/* Opcional: cambiar color del label cuando el campo está enfocado */
+		}
+
+		.form-floating>.form-control {
+			padding: 1rem;
+			height: calc(3.5rem + 2px);
+			background-color: transparent;
+			/* Eliminar el fondo blanco en el campo */
+			border: 1px solid #444;
+			color: #fff;
+			/* Asegura que el texto del input sea blanco */
+		}
+
+		.form-floating>.form-control:focus {
+			border-color: #007bff;
+			/* Cambia el borde cuando el campo está enfocado */
+			box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+			/* Agregar sombra al enfocarse */
+		}
+
+
+		.form-control:focus {
+			border-color: #007bff;
+			box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+		}
+
+		#tourDate::-webkit-calendar-picker-indicator {
+			filter: invert(1);
+		}
+
+		.form-floating>label {
+			padding-left: 1rem;
+		}
+
+		.form-floating>.form-control {
+			padding: 1rem;
+			height: calc(3.5rem + 2px);
+		}
+
+		.bg-gradient {
+			background-size: 200% 200%;
+			animation: gradientAnimation 5s ease infinite;
+		}
+
+		@keyframes gradientAnimation {
+			0% {
+				background-position: 0% 50%;
+			}
+
+			50% {
+				background-position: 100% 50%;
+			}
+
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+
+		.bg-dark-card {
+			background: #1a1e2b;
+			border: 1px solid #2a2f3f;
+			transition: all 0.3s ease;
+		}
+
+		.hover-card-dark:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+			border-color: #3498db;
+		}
+
+		.destination-badge {
+			position: absolute;
+			top: -15px;
+			right: 20px;
+			font-size: 2em;
+			background: #1a1e2b;
+			padding: 5px 15px;
+			border-radius: 50%;
+			border: 1px solid #2a2f3f;
+		}
+
+		.destination-badge-sm {
+			font-size: 1.2em;
+		}
+
+		.text-light-muted {
+			color: #a0a0a0 !important;
+		}
+
+		.slide-in-left {
+			animation: slideInLeft 0.5s ease-out forwards;
+		}
+
+		.delay-1 {
+			animation-delay: 0.2s;
+		}
+
+		.delay-2 {
+			animation-delay: 0.4s;
+		}
+
+		@keyframes slideInLeft {
+			from {
+				opacity: 0;
+				transform: translateX(-20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		.feature-card {
+			background: rgba(255, 255, 255, 0.05);
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 15px;
+			transition: all 0.3s ease;
+		}
+
+		.feature-card:hover {
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		.tips-container p {
+			margin-bottom: 10px;
+			padding: 8px;
+			border-radius: 5px;
+			transition: all 0.3s ease;
+		}
+
+		.tips-container p:hover {
+			background: rgba(255, 255, 255, 0.05);
+			transform: translateX(5px);
+		}
+
+		.modal-content {
+			border: 1px solid #2a2f3f;
+		}
+
+		.btn-outline-primary {
+			border-color: #3498db;
+			color: #3498db;
+		}
+
+		.btn-outline-primary:hover {
+			background-color: #3498db;
+			color: white;
+		}
+
+		.footer {
+			background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
+			color: #fff;
+			padding: 40px 0;
+			text-align: center;
+			position: relative;
+			width: 100%;
+			font-family: 'Poppins', Arial, sans-serif;
+			box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.footer::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background: linear-gradient(90deg,
+					rgba(255, 255, 255, 0) 0%,
+					rgba(255, 255, 255, 0.3) 50%,
+					rgba(255, 255, 255, 0) 100%);
+		}
+
+		.footer a {
+			color: #fff;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			padding: 5px 10px;
+			border-radius: 15px;
+			display: inline-block;
+		}
+
+		.footer a:hover {
+			color: #ffd700;
+			background: rgba(255, 255, 255, 0.1);
+			transform: translateY(-2px);
+		}
+
+		.footer .developers {
+			font-size: 0.9em;
+			margin-top: 15px;
+			color: rgba(255, 255, 255, 0.7);
+			padding: 10px;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.border-glow {
+			border: 1px solid transparent;
+			/* Borde extremadamente delgado */
+			border-radius: 10px;
+			background-image: linear-gradient(to right, #000, #000), linear-gradient(to right, #00f, #0ff);
+			background-origin: border-box;
+			background-clip: content-box, border-box;
+			transition: 0.3s ease-in-out;
+			/* Suavidad en la transición */
+			margin: 0 auto;
+			/* Centra horizontalmente el elemento */
+		}
+
+		.border-glow:hover {
+			background-image: linear-gradient(to right, #000, #000), linear-gradient(to right, #00ffcc, #00ffee);
+			/* Colores sutiles */
+			box-shadow: 0 0 0.5px rgba(0, 255, 255, 0.2), 0 0 1px rgba(0, 255, 255, 0.1);
+			/* Efecto de brillo muy tenue */
+		}
+
+
+
+
+		@media (max-width: 768px) {
+
+			/* Cabecera */
+			#cabecera {
+				padding: 15px 20px;
+			}
+
+			/* Pestañas en móviles - Hacerlas más pequeñas */
+			.nav-tabs {
+				flex-direction: row;
+				/* Alinea las pestañas en fila */
+				gap: 5px;
+				/* Espaciado entre pestañas */
+				justify-content: center;
+				/* Centra las pestañas */
+				flex-wrap: wrap;
+				/* Permite que las pestañas se ajusten si es necesario */
+			}
+
+			.nav-tabs .nav-link {
+				width: auto;
+				/* No ocupa toda la línea */
+				text-align: center;
+				padding: 8px 12px;
+				/* Reduce el tamaño de las pestañas */
+				font-size: 0.85rem;
+				/* Disminuye el tamaño de la fuente */
+				border-radius: 20px;
+				/* Reduce el borde redondeado */
+			}
+
+			/* Welcome Container */
+			.welcome-container {
+				padding: 20px;
+				margin: 15px auto;
+			}
+
+			.welcome-grid {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+
+			/* Carousel */
+			#carouselContainer {
+				margin: 0 10px;
+			}
+
+			.carousel-inner img {
+				height: 300px;
+			}
+
+			.carousel-caption {
+				padding: 10px;
+				bottom: 20px;
+			}
+
+			/* Company Stats */
+			.company-stats {
+				grid-template-columns: 1fr;
+				gap: 1rem;
+				padding: 1rem;
+			}
+
+			.stat-item {
+				border-right: none;
+				border-bottom: 1px solid #2a2f3f;
+				padding: 1rem;
+			}
+
+			.stat-item:last-child {
+				border-bottom: none;
+			}
+
+			/* Valores Grid */
+			.valores-grid {
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+
+			.valor-item {
+				padding: 1.5rem;
+			}
+
+			/* Forms */
+			.form-floating>.form-control {
+				height: calc(3rem + 2px);
+				font-size: 14px;
+			}
+
+			.form-floating>label {
+				padding: 0.75rem;
+				font-size: 14px;
+			}
+
+			/* Cards */
+			.bg-dark-card {
+				margin: 10px;
+			}
+
+			.destination-badge {
+				top: -10px;
+				right: 10px;
+				font-size: 1.5em;
+				padding: 3px 10px;
+			}
+
+			/* Feature Cards */
+			.feature-card {
+				padding: 15px;
+				margin-bottom: 10px;
+			}
+
+			/* Footer ajustes para móviles */
+			.footer {
+				padding: 20px 10px;
+			}
+
+			.footer .developers {
+				display: block;
+				/* Asegura que los elementos se apilen verticalmente */
+				font-size: 0.9rem;
+				margin-top: 10px;
+				text-align: center;
+				/* Centra el contenido */
+			}
+
+			/* Nombres de los desarrolladores */
+			.footer .developers a {
+				color: #ffd700;
+				text-decoration: none;
+				margin: 0 5px;
+			}
+
+			.footer .developers a:hover {
+				text-decoration: underline;
+			}
+		}
+
+
+		/* Media Queries para dispositivos muy pequeños */
+		@media (max-width: 480px) {
+			.about-header h1 {
+				font-size: 1.8rem;
+			}
+
+			.stat-number {
+				font-size: 2rem;
+			}
+
+			.carousel-inner img {
+				height: 250px;
+			}
+
+			.welcome-badge {
+				position: static;
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+
+			.location-badge {
+				position: static;
+				display: inline-block;
+				margin: 10px 0;
+			}
+
+			.accordion-button {
+				padding: 1rem;
+				font-size: 0.9rem;
+			}
+
+			.accordion-body {
+				padding: 1rem;
+				font-size: 0.9rem;
+			}
+		}
+
+		/* Media Queries para tablets */
+		@media (min-width: 769px) and (max-width: 1024px) {
+			.welcome-grid {
+				grid-template-columns: 1fr;
+				gap: 25px;
+			}
+
+			.company-stats {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.valores-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.carousel-inner img {
+				height: 400px;
+			}
+		}
+
+		/* Optimizaciones para dispositivos de alta densidad de píxeles */
+		@media (-webkit-min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi) {
+			.logo img {
+				transform: translateZ(0);
+			}
+		}
+
+		/* Ajustes para orientación horizontal en móviles */
+		@media (max-height: 500px) and (orientation: landscape) {
+			.carousel-inner img {
+				height: 200px;
+			}
+
+			.nav-tabs {
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+
+			.nav-tabs .nav-link {
+				width: auto;
+			}
+		}
+	</style>
 </head>
+
 <body>
- 
-    <div id="cabecera" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <a href="#" class="logo">
-                <img src="IMAGENES/logo1.png" alt="Logo"style="height: 65px;">
-            </a>
-    
-            <!-- Botón de hamburguesa -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#headerTabs" aria-controls="headerTabs" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <!-- Pestañas de navegación -->
-            <div class="collapse navbar-collapse" id="headerTabs">
-                <ul class="nav nav-tabs ms-auto" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="inicio-tab" data-bs-toggle="tab" data-bs-target="#inicio" type="button" role="tab" aria-controls="inicio" aria-selected="true">Inicio</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nosotros-tab" data-bs-toggle="tab" data-bs-target="#nosotros" type="button" role="tab" aria-controls="nosotros" aria-selected="false">Nosotros</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tours-tab" data-bs-toggle="tab" data-bs-target="#tours" type="button" role="tab" aria-controls="tours" aria-selected="false">Tours</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="juego-tab" data-bs-toggle="tab" data-bs-target="#juego" type="button" role="tab" aria-controls="juego" aria-selected="false">Info</button>
-                    </li>
-                    <li class="nav-item ms-3">
-            <a href="/login" class="btn btn-outline-primary">
-                <i class="bi bi-person me-2"></i>Iniciar Sesión
-            </a>
-        </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    
-    
 
-    
+	<div id="cabecera" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<!-- Logo -->
+			<a href="#" class="logo">
+				<img src="IMAGENES/logo1.png" alt="Logo" style="height: 65px;">
+			</a>
 
-    <div class="tab-content" id="myTabContent">
-        <!-- Sección de Inicio modificada -->
-        
+			<!-- Botón de hamburguesa -->
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#headerTabs"
+				aria-controls="headerTabs" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-      
-        
-         <!-- Inicio Tab -->
-    <div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
-        <div class="welcome-container">
-            <span class="welcome-badge">Tu próxima aventura comienza aquí</span>
-            <h3>¡Bienvenidos a Serendipity Travels!</h3>
-            
-            <div class="welcome-grid">
-                <div class="welcome-text">
-                    <p>En Serendipity Travels, estamos aquí para llevarte a descubrir los rincones más fascinantes del mundo de manera inesperada y maravillosa. Nuestro nombre, inspirado en la serendipia, simboliza el arte de encontrar cosas buenas sin buscarlas.</p>
-                    <div class="highlight-box">
-                        <h4>¿Por qué elegirnos?</h4>
-                        <ul>
-                            <li>Experiencias únicas y personalizadas</li>
-                            <li>Guías locales expertos</li>
-                            <li>Atención 24/7</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="welcome-text">
-                    <p>Nuestro equipo está comprometido a diseñar experiencias de viaje únicas que superen tus expectativas. Ya sea que desees explorar culturas locales, disfrutar de la naturaleza o simplemente relajarte, estamos aquí para hacer que cada paso de tu viaje esté lleno de descubrimientos asombrosos.</p>
-                    <div class="highlight-box">
-                        <h4>Nuestros Servicios</h4>
-                        <ul>
-                            <li>Tours personalizados</li>
-                            <li>Paquetes todo incluido</li>
-                            <li>Asesoría de viaje especializada</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="stats-container">
-            <div class="row text-center g-0">
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <i class="fas fa-globe-americas"></i>
-                        <h4>50+</h4>
-                        <p>Destinos</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <i class="fas fa-users"></i>
-                        <h4>10000+</h4>
-                        <p>Viajeros Felices</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <i class="fas fa-award"></i>
-                        <h4>15+</h4>
-                        <p>Años de Experiencia</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <i class="fas fa-star"></i>
-                        <h4>4.9/5</h4>
-                        <p>Calificación</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container my-5">
-            <div id="carouselContainer" class="carousel slide" data-bs-ride="carousel">
-                <!-- Indicadores -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="6" aria-label="Slide 7"></button>
-                    <button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="7" aria-label="Slide 8"></button>
-                </div>
-        
-                <!-- Contenido del carrusel -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Egipto</span>
-                        <img src="IMAGENES/fondo2.jpg" class="d-block w-100" alt="Pirámides de Egipto">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>PIRÁMIDES DE EGIPTO</h5>
-                            <p>Descubre la magia de una de las siete maravillas del mundo antiguo</p>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-item">
-                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Francia</span>
-                        <img src="IMAGENES/fondo3.png" class="d-block w-100" alt="Torre Eiffel">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>TORRE EIFFEL</h5>
-                            <p>Símbolo del romance y la elegancia en el corazón de París</p>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-item">
-                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> India</span>
-                        <img src="IMAGENES/fondo4.jpg" class="d-block w-100" alt="Taj Mahal">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>TAJ MAHAL</h5>
-                            <p>Un monumento al amor eterno y la arquitectura mogol</p>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-item">
-                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Japón</span>
-                        <img src="IMAGENES/fondo5.jpg" class="d-block w-100" alt="Bosque de Bambú">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>BOSQUE DE BAMBÚ EN ARASHIYAMA</h5>
-                            <p>Sumérgete en la serenidad de este místico bosque japonés</p>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-item">
-                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Italia</span>
-                        <img src="IMAGENES/fondo6.jpg" class="d-block w-100" alt="Torre de Pisa">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>TORRE INCLINADA DE PISA</h5>
-                            <p>Maravíllate con esta peculiar obra maestra arquitectónica</p>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-item">
-                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Italia</span>
-                        <img src="IMAGENES/fondo7.jpg" class="d-block w-100" alt="Coliseo Romano">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>COLISEO ROMANO</h5>
-                            <p>Revive la historia en el anfiteatro más famoso del mundo</p>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-item">
-                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> España</span>
-                        <img src="IMAGENES/fondo8.jpeg" class="d-block w-100" alt="Cueva Nitro">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>CUEVA NITRO</h5>
-                            <p>Explora las maravillas subterráneas de esta fascinante cueva</p>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Controles -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselContainer" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselContainer" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Nosotros Tab -->
-    <div class="tab-pane fade" id="nosotros" role="tabpanel" aria-labelledby="nosotros-tab">
-        <div class="about-section">
-            <div class="about-header animate-fadeIn">
-                <h1>¿Quiénes somos?</h1>
-                <p class="lead">Descubre la esencia de Serendipity Travels</p>
-            </div>
-
-            <div class="company-stats animate-fadeIn">
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Años de Experiencia</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Clientes Satisfechos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Destinos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-label">Satisfacción</div>
-                </div>
-            </div>
-
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item animate-fadeIn">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMision" aria-expanded="true" aria-controls="collapseMision">
-                            Nuestra Misión
-                        </button>
-                    </h2>
-                    <div id="collapseMision" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <p>En Serendipity Travels, nuestra misión es transformar la manera en que los turistas experimentan el mundo. Nos comprometemos a ofrecer viajes personalizados y auténticos que conecten profundamente con la cultura local. Buscamos crear experiencias memorables que inspiren el entendimiento intercultural y fomenten el respeto por la diversidad.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item animate-fadeIn">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVision" aria-expanded="false" aria-controls="collapseVision">
-                            Nuestra Visión
-                        </button>
-                    </h2>
-                    <div id="collapseVision" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <p>Nuestra visión en Serendipity Travels es convertirnos en líderes de la industria turística. Aspiramos a ser reconocidos por nuestra dedicación a proporcionar experiencias enriquecedoras que promuevan la comprensión intercultural y el respeto por la diversidad.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item animate-fadeIn">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseValores" aria-expanded="false" aria-controls="collapseValores">
-                            Valores Corporativos
-                        </button>
-                    </h2>
-                    <div id="collapseValores" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="valores-grid">
-                                <div class="valor-item">
-                                    <div class="valor-icon">🤝</div>
-                                    <h3>Autenticidad</h3>
-                                    <p>Experiencias genuinas y significativas</p>
-                                </div>
-                                <div class="valor-item">
-                                    <div class="valor-icon">⭐</div>
-                                    <h3>Excelencia</h3>
-                                    <p>Compromiso con la calidad superior</p>
-                                </div>
-                                <div class="valor-item">
-                                    <div class="valor-icon">🌍</div>
-                                    <h3>Transparencia</h3>
-                                    <p>Honestidad en cada interacción</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item animate-fadeIn">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObjetivos" aria-expanded="false" aria-controls="collapseObjetivos">
-                            Objetivos Estratégicos
-                        </button>
-                    </h2>
-                    <div id="collapseObjetivos" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <ul class="objetivos-list">
-                                <li>Expandir nuestra presencia en nuevos destinos</li>
-                                <li>Diversificar nuestra oferta de productos y servicios</li>
-                                <li>Mantenernos a la vanguardia de la innovación</li>
-                                <li>Mejorar continuamente nuestros estándares de calidad</li>
-                                <li>Fomentar relaciones sólidas con nuestros colaboradores</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+			<!-- Pestañas de navegación -->
+			<div class="collapse navbar-collapse" id="headerTabs">
+				<ul class="nav nav-tabs ms-auto" id="myTab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="inicio-tab" data-bs-toggle="tab" data-bs-target="#inicio"
+							type="button" role="tab" aria-controls="inicio" aria-selected="true">Inicio</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="nosotros-tab" data-bs-toggle="tab" data-bs-target="#nosotros"
+							type="button" role="tab" aria-controls="nosotros" aria-selected="false">Nosotros</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="tours-tab" data-bs-toggle="tab" data-bs-target="#tours"
+							type="button" role="tab" aria-controls="tours" aria-selected="false">Tours</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="juego-tab" data-bs-toggle="tab" data-bs-target="#juego"
+							type="button" role="tab" aria-controls="juego" aria-selected="false">Info</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<a class="nav-link" th:href="@{/login}" href="/login" role="tab" aria-controls="salir"
+							aria-selected="false">Iniciar Sesión</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 
-        <!-- Sección de Tours -->
-        <div class="tab-pane fade" id="tours" role="tabpanel" aria-labelledby="tours-tab">
-            <h2 class="text-center mb-4 mt-4 fw-bold text-light">Nuestros Tours</h2>
-            <p class="text-center mb-5 text-light-muted">
-                Explora nuestra selección de destinos, el momento perfecto para visitarlos.
-            </p>
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                    <!-- Tour 1 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="IMAGENES/fondo3.png" class="card-img-top" alt="Torre Eiffel" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">Torre Eiffel - Francia</h5>
-                                <p class="card-text">Descubre el símbolo más emblemático de París. Este tour incluye acceso prioritario a la torre, vistas panorámicas de la ciudad y una cena romántica en el restaurante 58 Tour Eiffel.</p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Tour 2 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="IMAGENES/fondo2.jpg" class="card-img-top" alt="Pirámides de Giza" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">Pirámides de Giza - Egipto</h5>
-                                <p class="card-text">Explora las majestuosas pirámides del antiguo Egipto. El tour incluye visita guiada a las tres principales pirámides, el Museo Egipcio y un paseo en camello por el desierto.</p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tour 3 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="IMAGENES/fondo4.jpg" class="card-img-top" alt="Taj Mahal" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">Taj Mahal - India</h5>
-                                <p class="card-text">Visita una de las maravillas del mundo moderno. Incluye tour al amanecer, guía experto en historia y arquitectura mogol, y experiencia fotográfica profesional.</p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tour 4 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="IMAGENES/fondo5.jpg" class="card-img-top" alt="Bosque de Bambú" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">Bosque de Bambú de Arashiyama - Japón</h5>
-                                <p class="card-text">Sumérgete en la tranquilidad del místico bosque de bambú. El tour incluye ceremonia del té tradicional, visita a templos zen y paseo en rickshaw.</p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tour 5 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="IMAGENES/fondo7.jpg" class="card-img-top" alt="Coliseo Romano" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">Coliseo Romano - Italia</h5>
-                                <p class="card-text">Viaja en el tiempo al antiguo Imperio Romano. Tour nocturno exclusivo, acceso a áreas restringidas y experiencia de gladiador virtual incluidos.</p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tour 6 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="IMAGENES/fondo6.jpg" class="card-img-top" alt="Torre de Pisa" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">Torre de Pisa - Italia</h5>
-                                <p class="card-text">Visita la famosa torre inclinada y sus alrededores. Incluye subida a la torre, tour por la Plaza de los Milagros y clase de fotografía creativa.</p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tour 7 -->
-                    <div class="col mb-4">
-                        <div class="card h-100">
-                            <img src="IMAGENES/fondo8.jpeg" class="card-img-top" alt="Cueva del Nitro" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">Cueva del Nitro - Colombia</h5>
-                                <p class="card-text">Aventúrate en las profundidades de esta impresionante cueva. Tour de espeleología, equipo especializado y guía experto en geología incluidos.</p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#reservationModal">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="juego" role="tabpanel" aria-labelledby="juego-tab">
-           
-        
-            <!-- Interactive Destinations Section -->
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="text-center mb-4 fw-bold text-light">Guía de Destinos</h2>
-                        <p class="text-center mb-5 text-light-muted">
-                            Explora nuestra selección de destinos únicos y descubre el momento perfecto para visitarlos.
-                        </p>
-                    </div>
-                </div>
-        
-                <div class="row g-4">
-                    <!-- Paris Card -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 bg-dark-card hover-card-dark" data-destination="paris">
-                            <div class="card-body position-relative">
-                                <div class="destination-badge">🗼</div>
-                                <h5 class="card-title fw-bold text-light">París, Francia</h5>
-                                <div class="destination-info text-light-muted">
-                                    <p class="slide-in-left"><strong>Atracción Principal:</strong> Torre Eiffel</p>
-                                    <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera (abril-junio)</p>
-                                    <p class="slide-in-left delay-2"><strong>Tip:</strong> Reserva tu visita con anticipación</p>
-                                </div>
-                                <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#parisModal">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Cairo Card -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 bg-dark-card hover-card-dark" data-destination="cairo">
-                            <div class="card-body position-relative">
-                                <div class="destination-badge">🔺</div>
-                                <h5 class="card-title fw-bold text-light">El Cairo, Egipto</h5>
-                                <div class="destination-info text-light-muted">
-                                    <p class="slide-in-left"><strong>Atracción Principal:</strong> Pirámides de Giza</p>
-                                    <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Otoño</p>
-                                    <p class="slide-in-left delay-2"><strong>Tip:</strong> Visita temprano en la mañana</p>
-                                </div>
-                                <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#cairoModal">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- Agra Card -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="agra">
-                    <div class="card-body position-relative">
-                        <div class="destination-badge">🏰</div>
-                        <h5 class="card-title fw-bold text-light">Agra, India</h5>
-                        <div class="destination-info text-light-muted">
-                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Taj Mahal</p>
-                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Invierno (nov-feb)</p>
-                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Visita al amanecer</p>
-                        </div>
-                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#agraModal">Más Información</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kyoto Card -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="kyoto">
-                    <div class="card-body position-relative">
-                        <div class="destination-badge">🎋</div>
-                        <h5 class="card-title fw-bold text-light">Kioto, Japón</h5>
-                        <div class="destination-info text-light-muted">
-                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Bosque de Bambú</p>
-                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera</p>
-                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Visita temprano</p>
-                        </div>
-                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#kyotoModal">Más Información</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Rome Card -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="rome">
-                    <div class="card-body position-relative">
-                        <div class="destination-badge">🏛️</div>
-                        <h5 class="card-title fw-bold text-light">Roma, Italia</h5>
-                        <div class="destination-info text-light-muted">
-                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Coliseo Romano</p>
-                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera</p>
-                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Compra Roma Pass</p>
-                        </div>
-                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#romeModal">Más Información</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- New Pisa Card -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="pisa">
-                    <div class="card-body position-relative">
-                        <div class="destination-badge">🗼</div>
-                        <h5 class="card-title fw-bold text-light">Pisa, Italia</h5>
-                        <div class="destination-info text-light-muted">
-                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Torre Inclinada</p>
-                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera-Verano</p>
-                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Reserva anticipada</p>
-                        </div>
-                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#pisaModal">Más Información</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Zapatoca Card -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="zapatoca">
-                    <div class="card-body position-relative">
-                        <div class="destination-badge">🌋</div>
-                        <h5 class="card-title fw-bold text-light">Zapatoca, Colombia</h5>
-                        <div class="destination-info text-light-muted">
-                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Cueva del Nitro</p>
-                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Dic-Mar</p>
-                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Ropa cómoda</p>
-                        </div>
-                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#zapatocaModal">Más Información</button>
-                    </div>
-                </div>
-            </div>
-                </div>
-            </div>
-        
-      <!-- Information Section -->
-<div class="container py-5">
-    <div class="row">
-        <div class="col-12">
-            <div class="p-4 bg-dark-card rounded-3 shadow-lg">
-                <h3 class="text-center mb-4 text-light">Información Adicional</h3>
-                <div class="row justify-content-center g-4">
-                    <div class="col-md-4">
-                        <div class="info-card hover-card-dark p-3 border-glow text-center" role="button" data-bs-toggle="modal" data-bs-target="#documentacionModal">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <i class="fas fa-passport fs-2 text-primary me-3"></i>
-                                <div>
-                                    <h5 class="mb-1 text-light">Documentación</h5>
-                                    <p class="mb-0 text-light-muted">Verifica los requisitos antes de viajar</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-        
-            <!-- Destination Modals -->
-            <!-- Paris Modal -->
-            <div class="modal fade" id="parisModal" tabindex="-1" aria-labelledby="parisModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content bg-dark">
-                        <div class="modal-header border-bottom border-secondary">
-                            <h5 class="modal-title text-light" id="parisModalLabel">
-                                <span class="destination-badge-sm me-2">🗼</span>
-                                París, Francia
-                            </h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="destination-details">
-                                <div class="feature-card mb-4">
-                                    <h6 class="text-primary">Atracción Principal: Torre Eiffel</h6>
-                                    <p class="text-light-muted">
-                                        La Torre Eiffel, un ícono mundial de 324 metros de altura, ofrece vistas panorámicas 
-                                        espectaculares de París. Construida en 1889, recibe más de 7 millones de visitantes al año.
-                                    </p>
-                                </div>
-                                <div class="feature-card mb-4">
-                                    <h6 class="text-primary">Mejor Época para Visitar</h6>
-                                    <p class="text-light-muted">
-                                        Primavera (abril-junio):
-                                        <ul class="text-light-muted">
-                                            <li>Temperaturas agradables entre 15-20°C</li>
-                                            <li>Jardines en plena floración</li>
-                                            <li>Menos turistas que en verano</li>
-                                            <li>Eventos culturales frecuentes</li>
-                                        </ul>
-                                    </p>
-                                </div>
-                                <div class="feature-card">
-                                    <h6 class="text-primary">Tips del Viajero</h6>
-                                    <div class="tips-container text-light-muted">
-                                        <p>🎟️ <strong>Reservas:</strong> Compra los tickets online con al menos 2 meses de anticipación.</p>
-                                        <p>⏰ <strong>Horarios:</strong> Visita la Torre temprano (antes de las 10:00) o al atardecer.</p>
-                                        <p>🚇 <strong>Transporte:</strong> Adquiere un pase de metro para varios días.</p>
-                                        <p>💡 <strong>Extra:</strong> No olvides visitar la torre de noche para ver el espectáculo de luces.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <!-- Cairo Modal -->
-            <div class="modal fade" id="cairoModal" tabindex="-1" aria-labelledby="cairoModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content bg-dark">
-                        <div class="modal-header border-bottom border-secondary">
-                            <h5 class="modal-title text-light" id="cairoModalLabel">
-                                <span class="destination-badge-sm me-2">🔺</span>
-                                El Cairo, Egipto
-                            </h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="destination-details">
-                                <div class="feature-card mb-4">
-                                    <h6 class="text-primary">Atracción Principal: Pirámides de Giza</h6>
-                                    <p class="text-light-muted">
-                                        Las Pirámides de Giza, una de las Siete Maravillas del Mundo Antiguo, son un complejo 
-                                        de tres pirámides monumentales construidas hace más de 4,500 años.
-                                    </p>
-                                </div>
-                                <div class="feature-card mb-4">
-                                    <h6 class="text-primary">Mejor Época para Visitar</h6>
-                                    <p class="text-light-muted">
-                                        Otoño (septiembre-noviembre):
-                                        <ul class="text-light-muted">
-                                            <li>Clima más fresco y agradable</li>
-                                            <li>Menos turistas en los sitios principales</li>
-                                            <li>Precios más económicos</li>
-                                            <li>Perfectas condiciones para fotografía</li>
-                                        </ul>
-                                    </p>
-                                </div>
-                                <div class="feature-card">
-                                    <h6 class="text-primary">Tips del Viajero</h6>
-                                    <div class="tips-container text-light-muted">
-                                        <p>🌅 <strong>Horario:</strong> Visita las pirámides al amanecer para evitar el calor y las multitudes</p>
-                                        <p>👕 <strong>Vestimenta:</strong> Usa ropa ligera y cómoda, protector solar y sombrero</p>
-                                        <p>💰 <strong>Negociación:</strong> Aprende a regatear en los bazares locales</p>
-                                        <p>🎫 <strong>Extra:</strong> Considera contratar un guía certificado para una experiencia más enriquecedora</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-               <!-- New Destination Modals -->
-    <!-- Agra Modal -->
-    <div class="modal fade" id="agraModal" tabindex="-1" aria-labelledby="agraModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark">
-                <div class="modal-header border-bottom border-secondary">
-                    <h5 class="modal-title text-light" id="agraModalLabel">
-                        <span class="destination-badge-sm me-2">🏰</span>
-                        Agra, India
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="destination-details">
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Atracción Principal: Taj Mahal</h6>
-                            <p class="text-light-muted">
-                                El Taj Mahal, una de las Nuevas Siete Maravillas del Mundo, es un impresionante mausoleo 
-                                de mármol blanco construido entre 1632 y 1653 por orden del emperador Shah Jahan en memoria 
-                                de su esposa favorita.
-                            </p>
-                        </div>
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Mejor Época para Visitar</h6>
-                            <p class="text-light-muted">
-                                Invierno (noviembre-febrero):
-                                <ul class="text-light-muted">
-                                    <li>Temperaturas agradables entre 15-25°C</li>
-                                    <li>Cielos despejados perfectos para fotografía</li>
-                                    <li>Menor humedad</li>
-                                    <li>Festivales locales importantes</li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="feature-card">
-                            <h6 class="text-primary">Tips del Viajero</h6>
-                            <div class="tips-container text-light-muted">
-                                <p>🌅 <strong>Momento ideal:</strong> Visita al amanecer para las mejores fotos y menos turistas</p>
-                                <p>👗 <strong>Vestimenta:</strong> Respeta el código de vestimenta local y lleva ropa modesta</p>
-                                <p>📸 <strong>Fotografía:</strong> Los trípodes están prohibidos dentro del complejo</p>
-                                <p>🎟️ <strong>Entradas:</strong> Compra los boletos en línea para evitar largas filas</p>
-                                <p>🚶‍♂️ <strong>Recorrido:</strong> Contrata un guía local certificado para conocer la historia completa</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Kyoto Modal -->
-    <div class="modal fade" id="kyotoModal" tabindex="-1" aria-labelledby="kyotoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark">
-                <div class="modal-header border-bottom border-secondary">
-                    <h5 class="modal-title text-light" id="kyotoModalLabel">
-                        <span class="destination-badge-sm me-2">🎋</span>
-                        Kioto, Japón
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="destination-details">
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Atracción Principal: Bosque de Bambú de Arashiyama</h6>
-                            <p class="text-light-muted">
-                                Un impresionante bosque de bambú gigante que crea un paisaje único y místico. 
-                                Los tallos de bambú se elevan hacia el cielo creando un túnel natural de luz 
-                                verde filtrada.
-                            </p>
-                        </div>
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Mejor Época para Visitar</h6>
-                            <p class="text-light-muted">
-                                Primavera (marzo-mayo):
-                                <ul class="text-light-muted">
-                                    <li>Temporada de cerezos en flor (sakura)</li>
-                                    <li>Clima suave y agradable</li>
-                                    <li>Festivales tradicionales</li>
-                                    <li>Perfecta iluminación natural</li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="feature-card">
-                            <h6 class="text-primary">Tips del Viajero</h6>
-                            <div class="tips-container text-light-muted">
-                                <p>⏰ <strong>Horario:</strong> Llega antes de las 7:00 AM para evitar las multitudes</p>
-                                <p>📸 <strong>Fotografía:</strong> Los días nublados ofrecen la mejor luz para fotos</p>
-                                <p>🚂 <strong>Transporte:</strong> Usa el pase JR para llegar a la estación de Arashiyama</p>
-                                <p>👘 <strong>Experiencia:</strong> Alquila un kimono tradicional para la visita</p>
-                                <p>🍜 <strong>Gastronomía:</strong> Prueba el tofu local, especialidad de Arashiyama</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Rome Modal -->
-    <div class="modal fade" id="romeModal" tabindex="-1" aria-labelledby="romeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark">
-                <div class="modal-header border-bottom border-secondary">
-                    <h5 class="modal-title text-light" id="romeModalLabel">
-                        <span class="destination-badge-sm me-2">🏛️</span>
-                        Roma, Italia
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="destination-details">
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Atracción Principal: Coliseo Romano</h6>
-                            <p class="text-light-muted">
-                                El Coliseo es el anfiteatro más grande jamás construido y un símbolo icónico 
-                                del Imperio Romano. Con capacidad para 50,000 espectadores, este monumento del 
-                                siglo I d.C. sigue siendo una maravilla arquitectónica.
-                            </p>
-                        </div>
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Mejor Época para Visitar</h6>
-                            <p class="text-light-muted">
-                                Primavera (abril-mayo) y Otoño (septiembre-octubre):
-                                <ul class="text-light-muted">
-                                    <li>Temperaturas moderadas</li>
-                                    <li>Menos turistas que en verano</li>
-                                    <li>Eventos culturales frecuentes</li>
-                                    <li>Precios más económicos</li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="feature-card">
-                            <h6 class="text-primary">Tips del Viajero</h6>
-                            <div class="tips-container text-light-muted">
-                                <p>🎫 <strong>Entradas:</strong> Compra el Roma Pass para acceso prioritario y transporte público</p>
-                                <p>⏰ <strong>Horario:</strong> Visita temprano en la mañana o al final de la tarde</p>
-                                <p>👣 <strong>Recorrido:</strong> Reserva un tour guiado para acceder a áreas restringidas</p>
-                                <p>📸 <strong>Fotos:</strong> El mejor ángulo es desde el Monte Palatino</p>
-                                <p>🍝 <strong>Comida:</strong> Evita los restaurantes turísticos cercanos, explora el barrio Monti</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-      <!-- pisa Modal -->
-    <div class="modal fade" id="pisaModal" tabindex="-1" aria-labelledby="pisaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark">
-                <div class="modal-header border-bottom border-secondary">
-                    <h5 class="modal-title text-light" id="pisaModalLabel">
-                        <span class="destination-badge-sm me-2">🗼</span>
-                        Pisa, Italia
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="destination-details">
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Atracción Principal: Torre Inclinada de Pisa</h6>
-                            <p class="text-light-muted">
-                                La Torre Inclinada de Pisa es uno de los monumentos más famosos de Italia. 
-                                Este campanario de 56 metros de altura, conocido por su característica inclinación, 
-                                es parte del conjunto monumental de la Plaza del Duomo, declarado Patrimonio de la 
-                                Humanidad por la UNESCO.
-                            </p>
-                        </div>
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Mejor Época para Visitar</h6>
-                            <p class="text-light-muted">
-                                Primavera y Verano (abril-agosto):
-                                <ul class="text-light-muted">
-                                    <li>Clima mediterráneo agradable</li>
-                                    <li>Días más largos para explorar</li>
-                                    <li>Festivales locales y eventos culturales</li>
-                                    <li>Jardines y plazas en pleno esplendor</li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="feature-card">
-                            <h6 class="text-primary">Tips del Viajero</h6>
-                            <div class="tips-container text-light-muted">
-                                <p>🎫 <strong>Entradas:</strong> Reserva los tickets con anticipación, especialmente en temporada alta</p>
-                                <p>⏰ <strong>Horario:</strong> Visita temprano en la mañana o al atardecer para mejores fotos</p>
-                                <p>📸 <strong>Fotografía:</strong> El mejor punto para las fotos típicas está en el lado norte</p>
-                                <p>🚶‍♂️ <strong>Recorrido:</strong> No te pierdas el Duomo y el Baptisterio</p>
-                                <p>🍝 <strong>Gastronomía:</strong> Prueba la cocina toscana en los restaurantes locales</p>
-                                <p>🚆 <strong>Transporte:</strong> Llega en tren desde Florencia en solo 1 hora</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Zapatoca Modal -->
-    <div class="modal fade" id="zapatocaModal" tabindex="-1" aria-labelledby="zapatocaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark">
-                <div class="modal-header border-bottom border-secondary">
-                    <h5 class="modal-title text-light" id="zapatocaModalLabel">
-                        <span class="destination-badge-sm me-2">🌋</span>
-                        Zapatoca, Colombia
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="destination-details">
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Atracción Principal: Cueva del Nitro</h6>
-                            <p class="text-light-muted">
-                                La Cueva del Nitro es una impresionante formación geológica natural que se extiende por más de 
-                                800 metros de profundidad. Conocida por sus fascinantes estalactitas y estalagmitas, además de 
-                                ser hogar de una variada fauna cavernícola.
-                            </p>
-                        </div>
-                        <div class="feature-card mb-4">
-                            <h6 class="text-primary">Mejor Época para Visitar</h6>
-                            <p class="text-light-muted">
-                                Diciembre a Marzo:
-                                <ul class="text-light-muted">
-                                    <li>Temporada seca con menos lluvias</li>
-                                    <li>Temperaturas agradables</li>
-                                    <li>Mejores condiciones para explorar las cuevas</li>
-                                    <li>Festivales locales tradicionales</li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="feature-card">
-                            <h6 class="text-primary">Tips del Viajero</h6>
-                            <div class="tips-container text-light-muted">
-                                <p>👟 <strong>Calzado:</strong> Usa botas o zapatos con buen agarre y resistentes al agua</p>
-                                <p>🔦 <strong>Equipamiento:</strong> Lleva linterna adicional y baterías de repuesto</p>
-                                <p>👕 <strong>Ropa:</strong> Viste en capas y lleva un cambio de ropa</p>
-                                <p>🎒 <strong>Mochila:</strong> Usa una mochila impermeable para proteger tus pertenencias</p>
-                                <p>🦇 <strong>Fauna:</strong> Respeta los murciélagos y la vida cavernícola</p>
-                                <p>🚶‍♂️ <strong>Guía:</strong> Contrata un guía local certificado, no explores solo</p>
-                                <p>📸 <strong>Fotografía:</strong> Usa una cámara resistente al agua y la humedad</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        
-            <!-- Documentación Modal -->
-            <div class="modal fade" id="documentacionModal" tabindex="-1" aria-labelledby="documentacionModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content bg-dark">
-                        <div class="modal-header border-bottom border-secondary">
-                            <h5 class="modal-title text-light" id="documentacionModalLabel">
-                                <i class="fas fa-passport text-primary me-2"></i>
-                                Información de la Empresa y Documentación
-                            </h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="company-info mb-4">
-                                <h6 class="text-primary">Sobre Nosotros</h6>
-                                <p class="text-light-muted">
-                                    Somos una agencia de viajes especializada en crear experiencias únicas y memorables. 
-                                    Con más de 10 años de experiencia, nos dedicamos a hacer realidad los sueños viajeros 
-                                    de nuestros clientes.
-                                </p>
-
-                                 <!-- Video Section -->
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="text-center mb-4 fw-bold text-light">Descubre Nuestros Destinos</h2>
-                        <div class="ratio ratio-16x9 shadow-lg rounded overflow-hidden hover-scale">
-                            <video controls class="video-element">
-                                <source src="IMAGENES/avatar.mp4" type="video/mp4">
-                                Tu navegador no soporta el elemento de video.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                            </div>
-                            <div class="documentation-info">
-                                <h6 class="text-primary">Documentación Necesaria</h6>
-                                <div class="accordion" id="documentacionAccordion">
-                                    <div class="accordion-item bg-dark">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                                Documentos Básicos
-                                            </button>
-                                        </h2>
-
-                                        
-                                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#documentacionAccordion">
-                                            <div class="accordion-body text-light-muted">
-                                                <ul>
-                                                    <li>Pasaporte vigente (mínimo 6 meses)</li>
-                                                    <li>Visa (según destino)</li>
-                                                    <li>Seguro de viaje</li>
-                                                    <li>Identificación oficial</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item bg-dark">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                                Servicios Adicionales
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#documentacionAccordion">
-                                            <div class="accordion-body text-light-muted">
-                                                <ul>
-                                                    <li>Asesoría en trámites de visa</li>
-                                                    <li>Gestión de seguros de viaje</li>
-                                                    <li>Reservas de hoteles y vuelos</li>
-                                                    <li>Planificación de itinerarios personalizados</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
-       
-      
-
-    </div>
-   
+	<div class="tab-content" id="myTabContent">
+		<!-- Sección de Inicio modificada -->
 
 
-  <!-- Modal principal -->
-  <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-dark">
-            <div class="modal-header border-bottom border-secondary">
-                <h5 class="modal-title text-primary fw-bold">Selecciona tu Plan de Viaje</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Planes de viaje -->
-                <div id="plansSection" class="row g-4 mb-4">
-                    <!-- Plan Sencillo -->
-                    <div class="col-md-4">
-                        <div class="card h-100 bg-gradient" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
-                            <div class="card-body">
-                                <h5 class="card-title text-center text-primary mb-3">Plan Sencillo</h5>
-                                <h6 class="card-subtitle mb-3 text-center text-white fw-bold">$199 USD</h6>
-                                <ul class="list-unstyled text-light">
-                                    <li class="mb-2">✓ Entrada básica</li>
-                                    <li class="mb-2">✓ Guía turístico</li>
-                                    <li class="mb-2">✓ Transporte básico</li>
-                                </ul>
-                                <button onclick="selectPlan('Sencillo', 199)" class="btn btn-outline-primary w-100 mt-3 hover-effect">
-                                    Seleccionar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Plan Premium -->
-                    <div class="col-md-4">
-                        <div class="card h-100 bg-gradient" style="background: linear-gradient(145deg, #2d3748, #1a202c);">
-                            <div class="card-body">
-                                <h5 class="card-title text-center text-primary mb-3">Plan Premium</h5>
-                                <h6 class="card-subtitle mb-3 text-center text-white fw-bold">$299 USD</h6>
-                                <ul class="list-unstyled text-light">
-                                    <li class="mb-2">✓ Todo lo del plan sencillo</li>
-                                    <li class="mb-2">✓ Acceso VIP</li>
-                                    <li class="mb-2">✓ Comidas incluidas</li>
-                                    <li class="mb-2">✓ Fotos profesionales</li>
-                                </ul>
-                                <button onclick="selectPlan('Premium', 299)" class="btn btn-outline-primary w-100 mt-3 hover-effect">
-                                    Seleccionar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Plan Platino -->
-                    <div class="col-md-4">
-                        <div class="card h-100 bg-gradient" style="background: linear-gradient(145deg, #2b2b3c, #1a1a2c);">
-                            <div class="card-body">
-                                <h5 class="card-title text-center text-primary mb-3">Plan Platino</h5>
-                                <h6 class="card-subtitle mb-3 text-center text-white fw-bold">$499 USD</h6>
-                                <ul class="list-unstyled text-light">
-                                    <li class="mb-2">✓ Todo lo del plan premium</li>
-                                    <li class="mb-2">✓ Experiencias exclusivas</li>
-                                    <li class="mb-2">✓ Guía privado</li>
-                                    <li class="mb-2">✓ Transporte de lujo</li>
-                                    <li class="mb-2">✓ Regalo sorpresa</li>
-                                </ul>
-                                <button onclick="selectPlan('Platino', 499)" class="btn btn-outline-primary w-100 mt-3 hover-effect">
-                                    Seleccionar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Formulario de registro -->
-                <div id="registrationForm" style="display: none;">
-                    <h5 class="text-primary mb-4">Información Personal</h5>
-                    <form id="bookingForm" onsubmit="submitForm(event)">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control bg-dark text-light border-secondary" id="nombre" placeholder="Nombre completo" required>
-                                    <label for="nombre" class="text">Nombre completo</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control bg-dark text-light border-secondary" id="cedula" placeholder="Número de cédula" required>
-                                    <label for="cedula" class="text">Número de cédula</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control bg-dark text-light border-secondary" id="email" placeholder="Correo electrónico" required>
-                                    <label for="email" class="text">Correo electrónico</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating mb-3">
-                                    <input type="date" class="form-control bg-dark text-light border-secondary" id="tourDate" required>
-                                    <label for="tourDate" class="text">Fecha del Tour</label>
-                                </div>
-                                <small class="text-light">Disponible de miércoles a domingo</small>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary w-100">Enviar Registro</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Resumen de la reserva -->
-                <div id="reservationSummary" style="display: none;" class="mt-4">
-                    <div class="card bg-gradient" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">Resumen de tu reserva</h5>
-                            <div class="text-light">
-                                <p class="mb-2">Plan seleccionado: <span id="selectedPlan" class="fw-bold"></span></p>
-                                <p class="mb-2">Precio: $<span id="selectedPrice" class="fw-bold"></span> USD</p>
-                                <p class="mb-2">Fecha seleccionada: <span id="selectedDate" class="fw-bold"></span></p>
-                                <p class="mb-2">Nombre: <span id="summaryName" class="fw-bold"></span></p>
-                                <p class="mb-2">Cédula: <span id="summaryCedula" class="fw-bold"></span></p>
-                                <p class="mb-2">Email: <span id="summaryEmail" class="fw-bold"></span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer border-top border-secondary">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="confirmButton" style="display: none;" onclick="confirmReservation()">
-                    Confirmar Reserva
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de confirmación -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content bg-dark">
-            <div class="modal-header border-bottom border-secondary">
-                <h5 class="modal-title text-primary">¡Reserva Confirmada!</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-light">
-                <p>Gracias <span id="confirmationName"></span> por tu reserva.</p>
-                <p>Hemos enviado un correo a <span id="confirmationEmail"></span> con todos los detalles de tu reserva.</p>
-                <div class="card bg-gradient mt-3" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
-                    <div class="card-body">
-                        <h6 class="text-primary">Detalles de la reserva:</h6>
-                        <p class="mb-1 text-light">Plan: <span id="confirmationPlan"></span></p>
-                        <p class="mb-1 text-light">Fecha: <span id="confirmationDate"></span></p>
-                        <p class="mb-1 text-light">Total: $<span id="confirmationPrice"></span> USD</p>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer border-top border-secondary">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer class="footer">
-    <div>
-        © 2024 Serendipity Travels | 
-        <span class="developers">Desarrollado por 
-            <a href="#">Eduard Caro y Jeferson Jerez</a>  
-        </span>
-    </div>
-</footer>
 
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Add hover effect to destination cards
-    const cards = document.querySelectorAll('.hover-card-dark');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.querySelector('.destination-info').style.opacity = '1';
-        });
-    });
+		<!-- Inicio Tab -->
+		<div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
+			<div class="welcome-container">
+				<span class="welcome-badge">Tu próxima aventura comienza aquí</span>
+				<h3>¡Bienvenidos a Serendipity Travels!</h3>
 
-    // Add click handler for learn more buttons
-    const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
-    learnMoreBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const card = e.target.closest('.card');
-            const destination = card.dataset.destination;
-            // Aquí puedes agregar la lógica para mostrar más información
-            console.log(`Showing more info for ${destination}`);
-        });
-    });
+				<div class="welcome-grid">
+					<div class="welcome-text">
+						<p>En Serendipity Travels, estamos aquí para llevarte a descubrir los rincones más fascinantes
+							del mundo de manera inesperada y maravillosa. Nuestro nombre, inspirado en la serendipia,
+							simboliza el arte de encontrar cosas buenas sin buscarlas.</p>
+						<div class="highlight-box">
+							<h4>¿Por qué elegirnos?</h4>
+							<ul>
+								<li>Experiencias únicas y personalizadas</li>
+								<li>Guías locales expertos</li>
+								<li>Atención 24/7</li>
+							</ul>
+						</div>
+					</div>
+					<div class="welcome-text">
+						<p>Nuestro equipo está comprometido a diseñar experiencias de viaje únicas que superen tus
+							expectativas. Ya sea que desees explorar culturas locales, disfrutar de la naturaleza o
+							simplemente relajarte, estamos aquí para hacer que cada paso de tu viaje esté lleno de
+							descubrimientos asombrosos.</p>
+						<div class="highlight-box">
+							<h4>Nuestros Servicios</h4>
+							<ul>
+								<li>Tours personalizados</li>
+								<li>Paquetes todo incluido</li>
+								<li>Asesoría de viaje especializada</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    // Add smooth scroll behavior
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-});
-</script>
+			<div class="stats-container">
+				<div class="row text-center g-0">
+					<div class="col-md-3">
+						<div class="stat-card">
+							<i class="fas fa-globe-americas"></i>
+							<h4>50+</h4>
+							<p>Destinos</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="stat-card">
+							<i class="fas fa-users"></i>
+							<h4>10000+</h4>
+							<p>Viajeros Felices</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="stat-card">
+							<i class="fas fa-award"></i>
+							<h4>15+</h4>
+							<p>Años de Experiencia</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="stat-card">
+							<i class="fas fa-star"></i>
+							<h4>4.9/5</h4>
+							<p>Calificación</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-<script>
-let selectedPlanInfo = {
-    name: '',
-    price: 0
-};
+			<div class="container my-5">
+				<div id="carouselContainer" class="carousel slide" data-bs-ride="carousel">
+					<!-- Indicadores -->
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="0" class="active"
+							aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="1"
+							aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="2"
+							aria-label="Slide 3"></button>
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="3"
+							aria-label="Slide 4"></button>
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="4"
+							aria-label="Slide 5"></button>
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="5"
+							aria-label="Slide 6"></button>
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="6"
+							aria-label="Slide 7"></button>
+						<button type="button" data-bs-target="#carouselContainer" data-bs-slide-to="7"
+							aria-label="Slide 8"></button>
+					</div>
 
-function selectPlan(planName, price) {
-    selectedPlanInfo.name = planName;
-    selectedPlanInfo.price = price;
-    
-    // Ocultar sección de planes y mostrar formulario
-    document.getElementById('plansSection').style.display = 'none';
-    document.getElementById('registrationForm').style.display = 'block';
-    
-    // Actualizar resumen
-    document.getElementById('selectedPlan').textContent = planName;
-    document.getElementById('selectedPrice').textContent = price;
-    
-    // Configurar fecha mínima (hoy)
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('tourDate').min = today;
-}
+					<!-- Contenido del carrusel -->
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<span class="location-badge"><i class="fas fa-map-marker-alt"></i> Egipto</span>
+							<img src="IMAGENES/fondo2.jpg" class="d-block w-100" alt="Pirámides de Egipto">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>PIRÁMIDES DE EGIPTO</h5>
+								<p>Descubre la magia de una de las siete maravillas del mundo antiguo</p>
+							</div>
+						</div>
 
-function submitForm(event) {
-    event.preventDefault();
-    
-    const nombre = document.getElementById('nombre').value;
-    const cedula = document.getElementById('cedula').value;
-    const email = document.getElementById('email').value;
-    const date = document.getElementById('tourDate').value;
-    
-    const selected = new Date(date);
-    const day = selected.getDay();
-    
-    // Verificar si es de miércoles (3) a domingo (0)
-    if (day === 1 || day === 2) { // Lunes o Martes
-        alert('Por favor selecciona una fecha de miércoles a domingo');
-        return;
-    }
-    
-    // Actualizar resumen
-    document.getElementById('selectedDate').textContent = date;
-    document.getElementById('summaryName').textContent = nombre;
-    document.getElementById('summaryCedula').textContent = cedula;
-    document.getElementById('summaryEmail').textContent = email;
-    
-    // Ocultar formulario y mostrar resumen
-    document.getElementById('registrationForm').style.display = 'none';
-    document.getElementById('reservationSummary').style.display = 'block';
-    document.getElementById('confirmButton').style.display = 'block';
-}
+						<div class="carousel-item">
+							<span class="location-badge"><i class="fas fa-map-marker-alt"></i> Francia</span>
+							<img src="IMAGENES/fondo3.png" class="d-block w-100" alt="Torre Eiffel">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>TORRE EIFFEL</h5>
+								<p>Símbolo del romance y la elegancia en el corazón de París</p>
+							</div>
+						</div>
 
-function confirmReservation() {
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const date = document.getElementById('tourDate').value;
-    
-    // Actualizar modal de confirmación
-    document.getElementById('confirmationName').textContent = nombre;
-    document.getElementById('confirmationEmail').textContent = email;
-    document.getElementById('confirmationPlan').textContent = selectedPlanInfo.name;
-    document.getElementById('confirmationDate').textContent = date;
-    document.getElementById('confirmationPrice').textContent = selectedPlanInfo.price;
-    
-    // Cerrar modal principal
-    const mainModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
-    mainModal.hide();
-    
-    // Mostrar modal de confirmación
-    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-    confirmationModal.show();
-    
-    // Resetear todo
-    setTimeout(() => {
-        document.getElementById('plansSection').style.display = 'block';
-        document.getElementById('registrationForm').style.display = 'none';
-        document.getElementById('reservationSummary').style.display = 'none';
-        document.getElementById('confirmButton').style.display = 'none';
-        document.getElementById('bookingForm').reset();
-    }, 500);
-}
-</script>
+						<div class="carousel-item">
+							<span class="location-badge"><i class="fas fa-map-marker-alt"></i> India</span>
+							<img src="IMAGENES/fondo4.jpg" class="d-block w-100" alt="Taj Mahal">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>TAJ MAHAL</h5>
+								<p>Un monumento al amor eterno y la arquitectura mogol</p>
+							</div>
+						</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Add hover effect to destination cards
-        const cards = document.querySelectorAll('.hover-card-dark');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.querySelector('.destination-info').style.opacity = '1';
-            });
-        });
-    
-        // Add click handler for learn more buttons
-        const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
-        learnMoreBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const card = e.target.closest('.card');
-                const destination = card.dataset.destination;
-                // Aquí puedes agregar la lógica para mostrar más información
-                console.log(`Showing more info for ${destination}`);
-            });
-        });
-    
-        // Add smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    });
-    </script>
-<!-- JS de Bootstrap -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+						<div class="carousel-item">
+							<span class="location-badge"><i class="fas fa-map-marker-alt"></i> Japón</span>
+							<img src="IMAGENES/fondo5.jpg" class="d-block w-100" alt="Bosque de Bambú">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>BOSQUE DE BAMBÚ EN ARASHIYAMA</h5>
+								<p>Sumérgete en la serenidad de este místico bosque japonés</p>
+							</div>
+						</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+						<div class="carousel-item">
+							<span class="location-badge"><i class="fas fa-map-marker-alt"></i> Italia</span>
+							<img src="IMAGENES/fondo6.jpg" class="d-block w-100" alt="Torre de Pisa">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>TORRE INCLINADA DE PISA</h5>
+								<p>Maravíllate con esta peculiar obra maestra arquitectónica</p>
+							</div>
+						</div>
+
+						<div class="carousel-item">
+							<span class="location-badge"><i class="fas fa-map-marker-alt"></i> Italia</span>
+							<img src="IMAGENES/fondo7.jpg" class="d-block w-100" alt="Coliseo Romano">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>COLISEO ROMANO</h5>
+								<p>Revive la historia en el anfiteatro más famoso del mundo</p>
+							</div>
+						</div>
+
+						<div class="carousel-item">
+							<span class="location-badge"><i class="fas fa-map-marker-alt"></i> España</span>
+							<img src="IMAGENES/fondo8.jpeg" class="d-block w-100" alt="Cueva Nitro">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>CUEVA NITRO</h5>
+								<p>Explora las maravillas subterráneas de esta fascinante cueva</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Controles -->
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselContainer"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselContainer"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Nosotros Tab -->
+		<div class="tab-pane fade" id="nosotros" role="tabpanel" aria-labelledby="nosotros-tab">
+			<div class="about-section">
+				<div class="about-header animate-fadeIn">
+					<h1>¿Quiénes somos?</h1>
+					<p class="lead">Descubre la esencia de Serendipity Travels</p>
+				</div>
+
+				<div class="company-stats animate-fadeIn">
+					<div class="stat-item">
+						<div class="stat-number">15+</div>
+						<div class="stat-label">Años de Experiencia</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">1000+</div>
+						<div class="stat-label">Clientes Satisfechos</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">50+</div>
+						<div class="stat-label">Destinos</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">98%</div>
+						<div class="stat-label">Satisfacción</div>
+					</div>
+				</div>
+
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item animate-fadeIn">
+						<h2 class="accordion-header">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse"
+								data-bs-target="#collapseMision" aria-expanded="true" aria-controls="collapseMision">
+								Nuestra Misión
+							</button>
+						</h2>
+						<div id="collapseMision" class="accordion-collapse collapse show"
+							data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>En Serendipity Travels, nuestra misión es transformar la manera en que los turistas
+									experimentan el mundo. Nos comprometemos a ofrecer viajes personalizados y
+									auténticos que conecten profundamente con la cultura local. Buscamos crear
+									experiencias memorables que inspiren el entendimiento intercultural y fomenten el
+									respeto por la diversidad.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item animate-fadeIn">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#collapseVision" aria-expanded="false" aria-controls="collapseVision">
+								Nuestra Visión
+							</button>
+						</h2>
+						<div id="collapseVision" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Nuestra visión en Serendipity Travels es convertirnos en líderes de la industria
+									turística. Aspiramos a ser reconocidos por nuestra dedicación a proporcionar
+									experiencias enriquecedoras que promuevan la comprensión intercultural y el respeto
+									por la diversidad.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item animate-fadeIn">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#collapseValores" aria-expanded="false" aria-controls="collapseValores">
+								Valores Corporativos
+							</button>
+						</h2>
+						<div id="collapseValores" class="accordion-collapse collapse"
+							data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<div class="valores-grid">
+									<div class="valor-item">
+										<div class="valor-icon">🤝</div>
+										<h3>Autenticidad</h3>
+										<p>Experiencias genuinas y significativas</p>
+									</div>
+									<div class="valor-item">
+										<div class="valor-icon">⭐</div>
+										<h3>Excelencia</h3>
+										<p>Compromiso con la calidad superior</p>
+									</div>
+									<div class="valor-item">
+										<div class="valor-icon">🌍</div>
+										<h3>Transparencia</h3>
+										<p>Honestidad en cada interacción</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item animate-fadeIn">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#collapseObjetivos" aria-expanded="false"
+								aria-controls="collapseObjetivos">
+								Objetivos Estratégicos
+							</button>
+						</h2>
+						<div id="collapseObjetivos" class="accordion-collapse collapse"
+							data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<ul class="objetivos-list">
+									<li>Expandir nuestra presencia en nuevos destinos</li>
+									<li>Diversificar nuestra oferta de productos y servicios</li>
+									<li>Mantenernos a la vanguardia de la innovación</li>
+									<li>Mejorar continuamente nuestros estándares de calidad</li>
+									<li>Fomentar relaciones sólidas con nuestros colaboradores</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Sección de Tours -->
+		<div class="tab-pane fade" id="tours" role="tabpanel" aria-labelledby="tours-tab">
+			<h2 class="text-center mb-4 mt-4 fw-bold text-light">Nuestros Tours</h2>
+			<p class="text-center mb-5 text-light-muted">
+				Explora nuestra selección de destinos, el momento perfecto para visitarlos.
+			</p>
+			<div class="container">
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+					<!-- Tour 1 -->
+					<div class="col">
+						<div class="card h-100">
+							<img src="IMAGENES/fondo3.png" class="card-img-top" alt="Torre Eiffel"
+								style="height: 200px; object-fit: cover;">
+							<div class="card-body">
+								<h5 class="card-title">Torre Eiffel - Francia</h5>
+								<p class="card-text">Descubre el símbolo más emblemático de París. Este tour incluye
+									acceso prioritario a la torre, vistas panorámicas de la ciudad y una cena romántica
+									en el restaurante 58 Tour Eiffel.</p>
+								<a href="/login" class="btn btn-primary w-100">Reservar</a>
+							</div>
+						</div>
+					</div>
+					<!-- Tour 2 -->
+					<div class="col">
+						<div class="card h-100">
+							<img src="IMAGENES/fondo2.jpg" class="card-img-top" alt="Pirámides de Giza"
+								style="height: 200px; object-fit: cover;">
+							<div class="card-body">
+								<h5 class="card-title">Pirámides de Giza - Egipto</h5>
+								<p class="card-text">Explora las majestuosas pirámides del antiguo Egipto. El tour
+									incluye visita guiada a las tres principales pirámides, el Museo Egipcio y un paseo
+									en camello por el desierto.</p>
+								<a href="/login" class="btn btn-primary w-100">Reservar</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tour 3 -->
+					<div class="col">
+						<div class="card h-100">
+							<img src="IMAGENES/fondo4.jpg" class="card-img-top" alt="Taj Mahal"
+								style="height: 200px; object-fit: cover;">
+							<div class="card-body">
+								<h5 class="card-title">Taj Mahal - India</h5>
+								<p class="card-text">Visita una de las maravillas del mundo moderno. Incluye tour al
+									amanecer, guía experto en historia y arquitectura mogol, y experiencia fotográfica
+									profesional.</p>
+								<a href="/login" class="btn btn-primary w-100">Reservar</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tour 4 -->
+					<div class="col">
+						<div class="card h-100">
+							<img src="IMAGENES/fondo5.jpg" class="card-img-top" alt="Bosque de Bambú"
+								style="height: 200px; object-fit: cover;">
+							<div class="card-body">
+								<h5 class="card-title">Bosque de Bambú de Arashiyama - Japón</h5>
+								<p class="card-text">Sumérgete en la tranquilidad del místico bosque de bambú. El tour
+									incluye ceremonia del té tradicional, visita a templos zen y paseo en rickshaw.</p>
+								<a href="/login" class="btn btn-primary w-100">Reservar</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tour 5 -->
+					<div class="col">
+						<div class="card h-100">
+							<img src="IMAGENES/fondo7.jpg" class="card-img-top" alt="Coliseo Romano"
+								style="height: 200px; object-fit: cover;">
+							<div class="card-body">
+								<h5 class="card-title">Coliseo Romano - Italia</h5>
+								<p class="card-text">Viaja en el tiempo al antiguo Imperio Romano. Tour nocturno
+									exclusivo, acceso a áreas restringidas y experiencia de gladiador virtual incluidos.
+								</p>
+								<a href="/login" class="btn btn-primary w-100">Reservar</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tour 6 -->
+					<div class="col">
+						<div class="card h-100">
+							<img src="IMAGENES/fondo6.jpg" class="card-img-top" alt="Torre de Pisa"
+								style="height: 200px; object-fit: cover;">
+							<div class="card-body">
+								<h5 class="card-title">Torre de Pisa - Italia</h5>
+								<p class="card-text">Visita la famosa torre inclinada y sus alrededores. Incluye subida
+									a la torre, tour por la Plaza de los Milagros y clase de fotografía creativa.</p>
+								<a href="/login" class="btn btn-primary w-100">Reservar</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tour 7 -->
+					<div class="col mb-4">
+						<div class="card h-100">
+							<img src="IMAGENES/fondo8.jpeg" class="card-img-top" alt="Cueva del Nitro"
+								style="height: 200px; object-fit: cover;">
+							<div class="card-body">
+								<h5 class="card-title">Cueva del Nitro - Colombia</h5>
+								<p class="card-text">Aventúrate en las profundidades de esta impresionante cueva. Tour
+									de espeleología, equipo especializado y guía experto en geología incluidos.</p>
+								<a href="/login" class="btn btn-primary w-100">Reservar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="juego" role="tabpanel" aria-labelledby="juego-tab">
+
+
+			<!-- Interactive Destinations Section -->
+			<div class="container py-5">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="text-center mb-4 fw-bold text-light">Guía de Destinos</h2>
+						<p class="text-center mb-5 text-light-muted">
+							Explora nuestra selección de destinos únicos y descubre el momento perfecto para visitarlos.
+						</p>
+					</div>
+				</div>
+
+				<div class="row g-4">
+					<!-- Paris Card -->
+					<div class="col-md-6 col-lg-4">
+						<div class="card h-100 bg-dark-card hover-card-dark" data-destination="paris">
+							<div class="card-body position-relative">
+								<div class="destination-badge">🗼</div>
+								<h5 class="card-title fw-bold text-light">París, Francia</h5>
+								<div class="destination-info text-light-muted">
+									<p class="slide-in-left"><strong>Atracción Principal:</strong> Torre Eiffel</p>
+									<p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera
+										(abril-junio)</p>
+									<p class="slide-in-left delay-2"><strong>Tip:</strong> Reserva tu visita con
+										anticipación</p>
+								</div>
+								<button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal"
+									data-bs-target="#parisModal">Más Información</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Cairo Card -->
+					<div class="col-md-6 col-lg-4">
+						<div class="card h-100 bg-dark-card hover-card-dark" data-destination="cairo">
+							<div class="card-body position-relative">
+								<div class="destination-badge">🔺</div>
+								<h5 class="card-title fw-bold text-light">El Cairo, Egipto</h5>
+								<div class="destination-info text-light-muted">
+									<p class="slide-in-left"><strong>Atracción Principal:</strong> Pirámides de Giza</p>
+									<p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Otoño</p>
+									<p class="slide-in-left delay-2"><strong>Tip:</strong> Visita temprano en la mañana
+									</p>
+								</div>
+								<button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal"
+									data-bs-target="#cairoModal">Más Información</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Agra Card -->
+					<div class="col-md-6 col-lg-4">
+						<div class="card h-100 bg-dark-card hover-card-dark" data-destination="agra">
+							<div class="card-body position-relative">
+								<div class="destination-badge">🏰</div>
+								<h5 class="card-title fw-bold text-light">Agra, India</h5>
+								<div class="destination-info text-light-muted">
+									<p class="slide-in-left"><strong>Atracción Principal:</strong> Taj Mahal</p>
+									<p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Invierno (nov-feb)
+									</p>
+									<p class="slide-in-left delay-2"><strong>Tip:</strong> Visita al amanecer</p>
+								</div>
+								<button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal"
+									data-bs-target="#agraModal">Más Información</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Kyoto Card -->
+					<div class="col-md-6 col-lg-4">
+						<div class="card h-100 bg-dark-card hover-card-dark" data-destination="kyoto">
+							<div class="card-body position-relative">
+								<div class="destination-badge">🎋</div>
+								<h5 class="card-title fw-bold text-light">Kioto, Japón</h5>
+								<div class="destination-info text-light-muted">
+									<p class="slide-in-left"><strong>Atracción Principal:</strong> Bosque de Bambú</p>
+									<p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera</p>
+									<p class="slide-in-left delay-2"><strong>Tip:</strong> Visita temprano</p>
+								</div>
+								<button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal"
+									data-bs-target="#kyotoModal">Más Información</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Rome Card -->
+					<div class="col-md-6 col-lg-4">
+						<div class="card h-100 bg-dark-card hover-card-dark" data-destination="rome">
+							<div class="card-body position-relative">
+								<div class="destination-badge">🏛️</div>
+								<h5 class="card-title fw-bold text-light">Roma, Italia</h5>
+								<div class="destination-info text-light-muted">
+									<p class="slide-in-left"><strong>Atracción Principal:</strong> Coliseo Romano</p>
+									<p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera</p>
+									<p class="slide-in-left delay-2"><strong>Tip:</strong> Compra Roma Pass</p>
+								</div>
+								<button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal"
+									data-bs-target="#romeModal">Más Información</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- New Pisa Card -->
+					<div class="col-md-6 col-lg-4">
+						<div class="card h-100 bg-dark-card hover-card-dark" data-destination="pisa">
+							<div class="card-body position-relative">
+								<div class="destination-badge">🗼</div>
+								<h5 class="card-title fw-bold text-light">Pisa, Italia</h5>
+								<div class="destination-info text-light-muted">
+									<p class="slide-in-left"><strong>Atracción Principal:</strong> Torre Inclinada</p>
+									<p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera-Verano</p>
+									<p class="slide-in-left delay-2"><strong>Tip:</strong> Reserva anticipada</p>
+								</div>
+								<button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal"
+									data-bs-target="#pisaModal">Más Información</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Zapatoca Card -->
+					<div class="col-md-6 col-lg-4">
+						<div class="card h-100 bg-dark-card hover-card-dark" data-destination="zapatoca">
+							<div class="card-body position-relative">
+								<div class="destination-badge">🌋</div>
+								<h5 class="card-title fw-bold text-light">Zapatoca, Colombia</h5>
+								<div class="destination-info text-light-muted">
+									<p class="slide-in-left"><strong>Atracción Principal:</strong> Cueva del Nitro</p>
+									<p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Dic-Mar</p>
+									<p class="slide-in-left delay-2"><strong>Tip:</strong> Ropa cómoda</p>
+								</div>
+								<button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal"
+									data-bs-target="#zapatocaModal">Más Información</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Information Section -->
+			<div class="container py-5">
+				<div class="row">
+					<div class="col-12">
+						<div class="p-4 bg-dark-card rounded-3 shadow-lg">
+							<h3 class="text-center mb-4 text-light">Información Adicional</h3>
+							<div class="row justify-content-center g-4">
+								<div class="col-md-4">
+									<div class="info-card hover-card-dark p-3 border-glow text-center" role="button"
+										data-bs-toggle="modal" data-bs-target="#documentacionModal">
+										<div class="d-flex align-items-center justify-content-center">
+											<i class="fas fa-passport fs-2 text-primary me-3"></i>
+											<div>
+												<h5 class="mb-1 text-light">Documentación</h5>
+												<p class="mb-0 text-light-muted">Verifica los requisitos antes de viajar
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- Destination Modals -->
+			<!-- Paris Modal -->
+			<div class="modal fade" id="parisModal" tabindex="-1" aria-labelledby="parisModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="parisModalLabel">
+								<span class="destination-badge-sm me-2">🗼</span>
+								París, Francia
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="destination-details">
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Atracción Principal: Torre Eiffel</h6>
+									<p class="text-light-muted">
+										La Torre Eiffel, un ícono mundial de 324 metros de altura, ofrece vistas
+										panorámicas
+										espectaculares de París. Construida en 1889, recibe más de 7 millones de
+										visitantes al año.
+									</p>
+								</div>
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Mejor Época para Visitar</h6>
+									<p class="text-light-muted">
+										Primavera (abril-junio):
+									<ul class="text-light-muted">
+										<li>Temperaturas agradables entre 15-20°C</li>
+										<li>Jardines en plena floración</li>
+										<li>Menos turistas que en verano</li>
+										<li>Eventos culturales frecuentes</li>
+									</ul>
+									</p>
+								</div>
+								<div class="feature-card">
+									<h6 class="text-primary">Tips del Viajero</h6>
+									<div class="tips-container text-light-muted">
+										<p>🎟️ <strong>Reservas:</strong> Compra los tickets online con al menos 2 meses
+											de anticipación.</p>
+										<p>⏰ <strong>Horarios:</strong> Visita la Torre temprano (antes de las 10:00) o
+											al atardecer.</p>
+										<p>🚇 <strong>Transporte:</strong> Adquiere un pase de metro para varios días.
+										</p>
+										<p>💡 <strong>Extra:</strong> No olvides visitar la torre de noche para ver el
+											espectáculo de luces.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Cairo Modal -->
+			<div class="modal fade" id="cairoModal" tabindex="-1" aria-labelledby="cairoModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="cairoModalLabel">
+								<span class="destination-badge-sm me-2">🔺</span>
+								El Cairo, Egipto
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="destination-details">
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Atracción Principal: Pirámides de Giza</h6>
+									<p class="text-light-muted">
+										Las Pirámides de Giza, una de las Siete Maravillas del Mundo Antiguo, son un
+										complejo
+										de tres pirámides monumentales construidas hace más de 4,500 años.
+									</p>
+								</div>
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Mejor Época para Visitar</h6>
+									<p class="text-light-muted">
+										Otoño (septiembre-noviembre):
+									<ul class="text-light-muted">
+										<li>Clima más fresco y agradable</li>
+										<li>Menos turistas en los sitios principales</li>
+										<li>Precios más económicos</li>
+										<li>Perfectas condiciones para fotografía</li>
+									</ul>
+									</p>
+								</div>
+								<div class="feature-card">
+									<h6 class="text-primary">Tips del Viajero</h6>
+									<div class="tips-container text-light-muted">
+										<p>🌅 <strong>Horario:</strong> Visita las pirámides al amanecer para evitar el
+											calor y las multitudes</p>
+										<p>👕 <strong>Vestimenta:</strong> Usa ropa ligera y cómoda, protector solar y
+											sombrero</p>
+										<p>💰 <strong>Negociación:</strong> Aprende a regatear en los bazares locales
+										</p>
+										<p>🎫 <strong>Extra:</strong> Considera contratar un guía certificado para una
+											experiencia más enriquecedora</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- New Destination Modals -->
+			<!-- Agra Modal -->
+			<div class="modal fade" id="agraModal" tabindex="-1" aria-labelledby="agraModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="agraModalLabel">
+								<span class="destination-badge-sm me-2">🏰</span>
+								Agra, India
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="destination-details">
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Atracción Principal: Taj Mahal</h6>
+									<p class="text-light-muted">
+										El Taj Mahal, una de las Nuevas Siete Maravillas del Mundo, es un impresionante
+										mausoleo
+										de mármol blanco construido entre 1632 y 1653 por orden del emperador Shah Jahan
+										en memoria
+										de su esposa favorita.
+									</p>
+								</div>
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Mejor Época para Visitar</h6>
+									<p class="text-light-muted">
+										Invierno (noviembre-febrero):
+									<ul class="text-light-muted">
+										<li>Temperaturas agradables entre 15-25°C</li>
+										<li>Cielos despejados perfectos para fotografía</li>
+										<li>Menor humedad</li>
+										<li>Festivales locales importantes</li>
+									</ul>
+									</p>
+								</div>
+								<div class="feature-card">
+									<h6 class="text-primary">Tips del Viajero</h6>
+									<div class="tips-container text-light-muted">
+										<p>🌅 <strong>Momento ideal:</strong> Visita al amanecer para las mejores fotos
+											y menos turistas</p>
+										<p>👗 <strong>Vestimenta:</strong> Respeta el código de vestimenta local y lleva
+											ropa modesta</p>
+										<p>📸 <strong>Fotografía:</strong> Los trípodes están prohibidos dentro del
+											complejo</p>
+										<p>🎟️ <strong>Entradas:</strong> Compra los boletos en línea para evitar largas
+											filas</p>
+										<p>🚶‍♂️ <strong>Recorrido:</strong> Contrata un guía local certificado para
+											conocer la historia completa</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Kyoto Modal -->
+			<div class="modal fade" id="kyotoModal" tabindex="-1" aria-labelledby="kyotoModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="kyotoModalLabel">
+								<span class="destination-badge-sm me-2">🎋</span>
+								Kioto, Japón
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="destination-details">
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Atracción Principal: Bosque de Bambú de Arashiyama</h6>
+									<p class="text-light-muted">
+										Un impresionante bosque de bambú gigante que crea un paisaje único y místico.
+										Los tallos de bambú se elevan hacia el cielo creando un túnel natural de luz
+										verde filtrada.
+									</p>
+								</div>
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Mejor Época para Visitar</h6>
+									<p class="text-light-muted">
+										Primavera (marzo-mayo):
+									<ul class="text-light-muted">
+										<li>Temporada de cerezos en flor (sakura)</li>
+										<li>Clima suave y agradable</li>
+										<li>Festivales tradicionales</li>
+										<li>Perfecta iluminación natural</li>
+									</ul>
+									</p>
+								</div>
+								<div class="feature-card">
+									<h6 class="text-primary">Tips del Viajero</h6>
+									<div class="tips-container text-light-muted">
+										<p>⏰ <strong>Horario:</strong> Llega antes de las 7:00 AM para evitar las
+											multitudes</p>
+										<p>📸 <strong>Fotografía:</strong> Los días nublados ofrecen la mejor luz para
+											fotos</p>
+										<p>🚂 <strong>Transporte:</strong> Usa el pase JR para llegar a la estación de
+											Arashiyama</p>
+										<p>👘 <strong>Experiencia:</strong> Alquila un kimono tradicional para la visita
+										</p>
+										<p>🍜 <strong>Gastronomía:</strong> Prueba el tofu local, especialidad de
+											Arashiyama</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Rome Modal -->
+			<div class="modal fade" id="romeModal" tabindex="-1" aria-labelledby="romeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="romeModalLabel">
+								<span class="destination-badge-sm me-2">🏛️</span>
+								Roma, Italia
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="destination-details">
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Atracción Principal: Coliseo Romano</h6>
+									<p class="text-light-muted">
+										El Coliseo es el anfiteatro más grande jamás construido y un símbolo icónico
+										del Imperio Romano. Con capacidad para 50,000 espectadores, este monumento del
+										siglo I d.C. sigue siendo una maravilla arquitectónica.
+									</p>
+								</div>
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Mejor Época para Visitar</h6>
+									<p class="text-light-muted">
+										Primavera (abril-mayo) y Otoño (septiembre-octubre):
+									<ul class="text-light-muted">
+										<li>Temperaturas moderadas</li>
+										<li>Menos turistas que en verano</li>
+										<li>Eventos culturales frecuentes</li>
+										<li>Precios más económicos</li>
+									</ul>
+									</p>
+								</div>
+								<div class="feature-card">
+									<h6 class="text-primary">Tips del Viajero</h6>
+									<div class="tips-container text-light-muted">
+										<p>🎫 <strong>Entradas:</strong> Compra el Roma Pass para acceso prioritario y
+											transporte público</p>
+										<p>⏰ <strong>Horario:</strong> Visita temprano en la mañana o al final de la
+											tarde</p>
+										<p>👣 <strong>Recorrido:</strong> Reserva un tour guiado para acceder a áreas
+											restringidas</p>
+										<p>📸 <strong>Fotos:</strong> El mejor ángulo es desde el Monte Palatino</p>
+										<p>🍝 <strong>Comida:</strong> Evita los restaurantes turísticos cercanos,
+											explora el barrio Monti</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- pisa Modal -->
+			<div class="modal fade" id="pisaModal" tabindex="-1" aria-labelledby="pisaModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="pisaModalLabel">
+								<span class="destination-badge-sm me-2">🗼</span>
+								Pisa, Italia
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="destination-details">
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Atracción Principal: Torre Inclinada de Pisa</h6>
+									<p class="text-light-muted">
+										La Torre Inclinada de Pisa es uno de los monumentos más famosos de Italia.
+										Este campanario de 56 metros de altura, conocido por su característica
+										inclinación,
+										es parte del conjunto monumental de la Plaza del Duomo, declarado Patrimonio de
+										la
+										Humanidad por la UNESCO.
+									</p>
+								</div>
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Mejor Época para Visitar</h6>
+									<p class="text-light-muted">
+										Primavera y Verano (abril-agosto):
+									<ul class="text-light-muted">
+										<li>Clima mediterráneo agradable</li>
+										<li>Días más largos para explorar</li>
+										<li>Festivales locales y eventos culturales</li>
+										<li>Jardines y plazas en pleno esplendor</li>
+									</ul>
+									</p>
+								</div>
+								<div class="feature-card">
+									<h6 class="text-primary">Tips del Viajero</h6>
+									<div class="tips-container text-light-muted">
+										<p>🎫 <strong>Entradas:</strong> Reserva los tickets con anticipación,
+											especialmente en temporada alta</p>
+										<p>⏰ <strong>Horario:</strong> Visita temprano en la mañana o al atardecer para
+											mejores fotos</p>
+										<p>📸 <strong>Fotografía:</strong> El mejor punto para las fotos típicas está en
+											el lado norte</p>
+										<p>🚶‍♂️ <strong>Recorrido:</strong> No te pierdas el Duomo y el Baptisterio</p>
+										<p>🍝 <strong>Gastronomía:</strong> Prueba la cocina toscana en los restaurantes
+											locales</p>
+										<p>🚆 <strong>Transporte:</strong> Llega en tren desde Florencia en solo 1 hora
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Zapatoca Modal -->
+			<div class="modal fade" id="zapatocaModal" tabindex="-1" aria-labelledby="zapatocaModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="zapatocaModalLabel">
+								<span class="destination-badge-sm me-2">🌋</span>
+								Zapatoca, Colombia
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="destination-details">
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Atracción Principal: Cueva del Nitro</h6>
+									<p class="text-light-muted">
+										La Cueva del Nitro es una impresionante formación geológica natural que se
+										extiende por más de
+										800 metros de profundidad. Conocida por sus fascinantes estalactitas y
+										estalagmitas, además de
+										ser hogar de una variada fauna cavernícola.
+									</p>
+								</div>
+								<div class="feature-card mb-4">
+									<h6 class="text-primary">Mejor Época para Visitar</h6>
+									<p class="text-light-muted">
+										Diciembre a Marzo:
+									<ul class="text-light-muted">
+										<li>Temporada seca con menos lluvias</li>
+										<li>Temperaturas agradables</li>
+										<li>Mejores condiciones para explorar las cuevas</li>
+										<li>Festivales locales tradicionales</li>
+									</ul>
+									</p>
+								</div>
+								<div class="feature-card">
+									<h6 class="text-primary">Tips del Viajero</h6>
+									<div class="tips-container text-light-muted">
+										<p>👟 <strong>Calzado:</strong> Usa botas o zapatos con buen agarre y
+											resistentes al agua</p>
+										<p>🔦 <strong>Equipamiento:</strong> Lleva linterna adicional y baterías de
+											repuesto</p>
+										<p>👕 <strong>Ropa:</strong> Viste en capas y lleva un cambio de ropa</p>
+										<p>🎒 <strong>Mochila:</strong> Usa una mochila impermeable para proteger tus
+											pertenencias</p>
+										<p>🦇 <strong>Fauna:</strong> Respeta los murciélagos y la vida cavernícola</p>
+										<p>🚶‍♂️ <strong>Guía:</strong> Contrata un guía local certificado, no explores
+											solo</p>
+										<p>📸 <strong>Fotografía:</strong> Usa una cámara resistente al agua y la
+											humedad</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Documentación Modal -->
+			<div class="modal fade" id="documentacionModal" tabindex="-1" aria-labelledby="documentacionModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content bg-dark">
+						<div class="modal-header border-bottom border-secondary">
+							<h5 class="modal-title text-light" id="documentacionModalLabel">
+								<i class="fas fa-passport text-primary me-2"></i>
+								Información de la Empresa y Documentación
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="company-info mb-4">
+								<h6 class="text-primary">Sobre Nosotros</h6>
+								<p class="text-light-muted">
+									Somos una agencia de viajes especializada en crear experiencias únicas y memorables.
+									Con más de 10 años de experiencia, nos dedicamos a hacer realidad los sueños
+									viajeros
+									de nuestros clientes.
+								</p>
+
+								<!-- Video Section -->
+								<div class="container py-5">
+									<div class="row">
+										<div class="col-12">
+											<h2 class="text-center mb-4 fw-bold text-light">Descubre Nuestros Destinos
+											</h2>
+											<div class="ratio ratio-16x9 shadow-lg rounded overflow-hidden hover-scale">
+												<video controls class="video-element">
+													<source src="IMAGENES/avatar.mp4" type="video/mp4">
+													Tu navegador no soporta el elemento de video.
+												</video>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="documentation-info">
+								<h6 class="text-primary">Documentación Necesaria</h6>
+								<div class="accordion" id="documentacionAccordion">
+									<div class="accordion-item bg-dark">
+										<h2 class="accordion-header">
+											<button class="accordion-button bg-dark text-light" type="button"
+												data-bs-toggle="collapse" data-bs-target="#collapseOne">
+												Documentos Básicos
+											</button>
+										</h2>
+
+
+										<div id="collapseOne" class="accordion-collapse collapse show"
+											data-bs-parent="#documentacionAccordion">
+											<div class="accordion-body text-light-muted">
+												<ul>
+													<li>Pasaporte vigente (mínimo 6 meses)</li>
+													<li>Visa (según destino)</li>
+													<li>Seguro de viaje</li>
+													<li>Identificación oficial</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="accordion-item bg-dark">
+										<h2 class="accordion-header">
+											<button class="accordion-button collapsed bg-dark text-light" type="button"
+												data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+												Servicios Adicionales
+											</button>
+										</h2>
+										<div id="collapseTwo" class="accordion-collapse collapse"
+											data-bs-parent="#documentacionAccordion">
+											<div class="accordion-body text-light-muted">
+												<ul>
+													<li>Asesoría en trámites de visa</li>
+													<li>Gestión de seguros de viaje</li>
+													<li>Reservas de hoteles y vuelos</li>
+													<li>Planificación de itinerarios personalizados</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	</div>
+
+
+
+	<!-- Modal principal -->
+	<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content bg-dark">
+				<div class="modal-header border-bottom border-secondary">
+					<h5 class="modal-title text-primary fw-bold">Selecciona tu Plan de Viaje</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<!-- Planes de viaje -->
+					<div id="plansSection" class="row g-4 mb-4">
+						<!-- Plan Sencillo -->
+						<div class="col-md-4">
+							<div class="card h-100 bg-gradient"
+								style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
+								<div class="card-body">
+									<h5 class="card-title text-center text-primary mb-3">Plan Sencillo</h5>
+									<h6 class="card-subtitle mb-3 text-center text-white fw-bold">$199 USD</h6>
+									<ul class="list-unstyled text-light">
+										<li class="mb-2">✓ Entrada básica</li>
+										<li class="mb-2">✓ Guía turístico</li>
+										<li class="mb-2">✓ Transporte básico</li>
+									</ul>
+									<button onclick="selectPlan('Sencillo', 199)"
+										class="btn btn-outline-primary w-100 mt-3 hover-effect">
+										Seleccionar
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- Plan Premium -->
+						<div class="col-md-4">
+							<div class="card h-100 bg-gradient"
+								style="background: linear-gradient(145deg, #2d3748, #1a202c);">
+								<div class="card-body">
+									<h5 class="card-title text-center text-primary mb-3">Plan Premium</h5>
+									<h6 class="card-subtitle mb-3 text-center text-white fw-bold">$299 USD</h6>
+									<ul class="list-unstyled text-light">
+										<li class="mb-2">✓ Todo lo del plan sencillo</li>
+										<li class="mb-2">✓ Acceso VIP</li>
+										<li class="mb-2">✓ Comidas incluidas</li>
+										<li class="mb-2">✓ Fotos profesionales</li>
+									</ul>
+									<button onclick="selectPlan('Premium', 299)"
+										class="btn btn-outline-primary w-100 mt-3 hover-effect">
+										Seleccionar
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- Plan Platino -->
+						<div class="col-md-4">
+							<div class="card h-100 bg-gradient"
+								style="background: linear-gradient(145deg, #2b2b3c, #1a1a2c);">
+								<div class="card-body">
+									<h5 class="card-title text-center text-primary mb-3">Plan Platino</h5>
+									<h6 class="card-subtitle mb-3 text-center text-white fw-bold">$499 USD</h6>
+									<ul class="list-unstyled text-light">
+										<li class="mb-2">✓ Todo lo del plan premium</li>
+										<li class="mb-2">✓ Experiencias exclusivas</li>
+										<li class="mb-2">✓ Guía privado</li>
+										<li class="mb-2">✓ Transporte de lujo</li>
+										<li class="mb-2">✓ Regalo sorpresa</li>
+									</ul>
+									<button onclick="selectPlan('Platino', 499)"
+										class="btn btn-outline-primary w-100 mt-3 hover-effect">
+										Seleccionar
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Formulario de registro -->
+					<div id="registrationForm" style="display: none;">
+						<h5 class="text-primary mb-4">Información Personal</h5>
+						<form id="bookingForm" onsubmit="submitForm(event)">
+							<div class="row g-3">
+								<div class="col-md-6">
+									<div class="form-floating mb-3">
+										<input type="text" class="form-control bg-dark text-light border-secondary"
+											id="nombre" placeholder="Nombre completo" required>
+										<label for="nombre" class="text">Nombre completo</label>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-floating mb-3">
+										<input type="text" class="form-control bg-dark text-light border-secondary"
+											id="cedula" placeholder="Número de cédula" required>
+										<label for="cedula" class="text">Número de cédula</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control bg-dark text-light border-secondary"
+											id="email" placeholder="Correo electrónico" required>
+										<label for="email" class="text">Correo electrónico</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="form-floating mb-3">
+										<input type="date" class="form-control bg-dark text-light border-secondary"
+											id="tourDate" required>
+										<label for="tourDate" class="text">Fecha del Tour</label>
+									</div>
+									<small class="text-light">Disponible de miércoles a domingo</small>
+								</div>
+								<div class="col-12">
+									<button type="submit" class="btn btn-primary w-100">Enviar Registro</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<!-- Resumen de la reserva -->
+					<div id="reservationSummary" style="display: none;" class="mt-4">
+						<div class="card bg-gradient" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Resumen de tu reserva</h5>
+								<div class="text-light">
+									<p class="mb-2">Plan seleccionado: <span id="selectedPlan" class="fw-bold"></span>
+									</p>
+									<p class="mb-2">Precio: $<span id="selectedPrice" class="fw-bold"></span> USD</p>
+									<p class="mb-2">Fecha seleccionada: <span id="selectedDate" class="fw-bold"></span>
+									</p>
+									<p class="mb-2">Nombre: <span id="summaryName" class="fw-bold"></span></p>
+									<p class="mb-2">Cédula: <span id="summaryCedula" class="fw-bold"></span></p>
+									<p class="mb-2">Email: <span id="summaryEmail" class="fw-bold"></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer border-top border-secondary">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary" id="confirmButton" style="display: none;"
+						onclick="confirmReservation()">
+						Confirmar Reserva
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal de confirmación -->
+	<div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content bg-dark">
+				<div class="modal-header border-bottom border-secondary">
+					<h5 class="modal-title text-primary">¡Reserva Confirmada!</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-light">
+					<p>Gracias <span id="confirmationName"></span> por tu reserva.</p>
+					<p>Hemos enviado un correo a <span id="confirmationEmail"></span> con todos los detalles de tu
+						reserva.</p>
+					<div class="card bg-gradient mt-3" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a);">
+						<div class="card-body">
+							<h6 class="text-primary">Detalles de la reserva:</h6>
+							<p class="mb-1 text-light">Plan: <span id="confirmationPlan"></span></p>
+							<p class="mb-1 text-light">Fecha: <span id="confirmationDate"></span></p>
+							<p class="mb-1 text-light">Total: $<span id="confirmationPrice"></span> USD</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer border-top border-secondary">
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div>
+			© 2024 Serendipity Travels |
+			<span class="developers">Desarrollado por
+				<a href="#">Eduard Caro y Jeferson Jerez</a>
+			</span>
+		</div>
+	</footer>
+
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			// Add hover effect to destination cards
+			const cards = document.querySelectorAll('.hover-card-dark');
+			cards.forEach(card => {
+				card.addEventListener('mouseenter', function () {
+					this.querySelector('.destination-info').style.opacity = '1';
+				});
+			});
+
+			// Add click handler for learn more buttons
+			const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
+			learnMoreBtns.forEach(btn => {
+				btn.addEventListener('click', function (e) {
+					const card = e.target.closest('.card');
+					const destination = card.dataset.destination;
+					// Aquí puedes agregar la lógica para mostrar más información
+					console.log(`Showing more info for ${destination}`);
+				});
+			});
+
+			// Add smooth scroll behavior
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					document.querySelector(this.getAttribute('href')).scrollIntoView({
+						behavior: 'smooth'
+					});
+				});
+			});
+		});
+	</script>
+
+	<script>
+		let selectedPlanInfo = {
+			name: '',
+			price: 0
+		};
+
+		function selectPlan(planName, price) {
+			selectedPlanInfo.name = planName;
+			selectedPlanInfo.price = price;
+
+			// Ocultar sección de planes y mostrar formulario
+			document.getElementById('plansSection').style.display = 'none';
+			document.getElementById('registrationForm').style.display = 'block';
+
+			// Actualizar resumen
+			document.getElementById('selectedPlan').textContent = planName;
+			document.getElementById('selectedPrice').textContent = price;
+
+			// Configurar fecha mínima (hoy)
+			const today = new Date().toISOString().split('T')[0];
+			document.getElementById('tourDate').min = today;
+		}
+
+		function submitForm(event) {
+			event.preventDefault();
+
+			const nombre = document.getElementById('nombre').value;
+			const cedula = document.getElementById('cedula').value;
+			const email = document.getElementById('email').value;
+			const date = document.getElementById('tourDate').value;
+
+			const selected = new Date(date);
+			const day = selected.getDay();
+
+			// Verificar si es de miércoles (3) a domingo (0)
+			if (day === 1 || day === 2) { // Lunes o Martes
+				alert('Por favor selecciona una fecha de miércoles a domingo');
+				return;
+			}
+
+			// Actualizar resumen
+			document.getElementById('selectedDate').textContent = date;
+			document.getElementById('summaryName').textContent = nombre;
+			document.getElementById('summaryCedula').textContent = cedula;
+			document.getElementById('summaryEmail').textContent = email;
+
+			// Ocultar formulario y mostrar resumen
+			document.getElementById('registrationForm').style.display = 'none';
+			document.getElementById('reservationSummary').style.display = 'block';
+			document.getElementById('confirmButton').style.display = 'block';
+		}
+
+		function confirmReservation() {
+			const nombre = document.getElementById('nombre').value;
+			const email = document.getElementById('email').value;
+			const date = document.getElementById('tourDate').value;
+
+			// Actualizar modal de confirmación
+			document.getElementById('confirmationName').textContent = nombre;
+			document.getElementById('confirmationEmail').textContent = email;
+			document.getElementById('confirmationPlan').textContent = selectedPlanInfo.name;
+			document.getElementById('confirmationDate').textContent = date;
+			document.getElementById('confirmationPrice').textContent = selectedPlanInfo.price;
+
+			// Cerrar modal principal
+			const mainModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
+			mainModal.hide();
+
+			// Mostrar modal de confirmación
+			const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+			confirmationModal.show();
+
+			// Resetear todo
+			setTimeout(() => {
+				document.getElementById('plansSection').style.display = 'block';
+				document.getElementById('registrationForm').style.display = 'none';
+				document.getElementById('reservationSummary').style.display = 'none';
+				document.getElementById('confirmButton').style.display = 'none';
+				document.getElementById('bookingForm').reset();
+			}, 500);
+		}
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			// Add hover effect to destination cards
+			const cards = document.querySelectorAll('.hover-card-dark');
+			cards.forEach(card => {
+				card.addEventListener('mouseenter', function () {
+					this.querySelector('.destination-info').style.opacity = '1';
+				});
+			});
+
+			// Add click handler for learn more buttons
+			const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
+			learnMoreBtns.forEach(btn => {
+				btn.addEventListener('click', function (e) {
+					const card = e.target.closest('.card');
+					const destination = card.dataset.destination;
+					// Aquí puedes agregar la lógica para mostrar más información
+					console.log(`Showing more info for ${destination}`);
+				});
+			});
+
+			// Add smooth scroll behavior
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					document.querySelector(this.getAttribute('href')).scrollIntoView({
+						behavior: 'smooth'
+					});
+				});
+			});
+		});
+	</script>
+	<!-- JS de Bootstrap -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
