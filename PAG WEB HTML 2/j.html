@@ -1,0 +1,396 @@
+<div class="tab-pane fade show active" id="juego" role="tabpanel" aria-labelledby="juego-tab">
+    <!-- Interactive Destinations Section -->
+    <div class="container py-5">
+        <div class="row g-4">
+            <!-- Agra Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="agra">
+                    <div class="card-body position-relative">
+                        <div class="destination-badge">🏰</div>
+                        <h5 class="card-title fw-bold text-light">Agra, India</h5>
+                        <div class="destination-info text-light-muted">
+                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Taj Mahal</p>
+                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Invierno (nov-feb)</p>
+                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Visita al amanecer</p>
+                        </div>
+                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#agraModal">Más Información</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kyoto Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="kyoto">
+                    <div class="card-body position-relative">
+                        <div class="destination-badge">🎋</div>
+                        <h5 class="card-title fw-bold text-light">Kioto, Japón</h5>
+                        <div class="destination-info text-light-muted">
+                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Bosque de Bambú</p>
+                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera</p>
+                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Visita temprano</p>
+                        </div>
+                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#kyotoModal">Más Información</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rome Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="rome">
+                    <div class="card-body position-relative">
+                        <div class="destination-badge">🏛️</div>
+                        <h5 class="card-title fw-bold text-light">Roma, Italia</h5>
+                        <div class="destination-info text-light-muted">
+                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Coliseo Romano</p>
+                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Primavera</p>
+                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Compra Roma Pass</p>
+                        </div>
+                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#romeModal">Más Información</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zapatoca Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 bg-dark-card hover-card-dark" data-destination="zapatoca">
+                    <div class="card-body position-relative">
+                        <div class="destination-badge">🌋</div>
+                        <h5 class="card-title fw-bold text-light">Zapatoca, Colombia</h5>
+                        <div class="destination-info text-light-muted">
+                            <p class="slide-in-left"><strong>Atracción Principal:</strong> Cueva del Nitro</p>
+                            <p class="slide-in-left delay-1"><strong>Mejor Época:</strong> Dic-Mar</p>
+                            <p class="slide-in-left delay-2"><strong>Tip:</strong> Ropa cómoda</p>
+                        </div>
+                        <button class="btn btn-outline-primary mt-3 w-100 learn-more-btn" data-bs-toggle="modal" data-bs-target="#zapatocaModal">Más Información</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Destination Modals -->
+    <!-- Agra Modal -->
+    <div class="modal fade" id="agraModal" tabindex="-1" aria-labelledby="agraModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-bottom border-secondary">
+                    <h5 class="modal-title text-light" id="agraModalLabel">
+                        <span class="destination-badge-sm me-2">🏰</span>
+                        Agra, India
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="destination-details">
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Atracción Principal: Taj Mahal</h6>
+                            <p class="text-light-muted">
+                                El Taj Mahal, una de las Nuevas Siete Maravillas del Mundo, es un impresionante mausoleo 
+                                de mármol blanco construido entre 1632 y 1653 por orden del emperador Shah Jahan en memoria 
+                                de su esposa favorita.
+                            </p>
+                        </div>
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Mejor Época para Visitar</h6>
+                            <p class="text-light-muted">
+                                Invierno (noviembre-febrero):
+                                <ul class="text-light-muted">
+                                    <li>Temperaturas agradables entre 15-25°C</li>
+                                    <li>Cielos despejados perfectos para fotografía</li>
+                                    <li>Menor humedad</li>
+                                    <li>Festivales locales importantes</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <h6 class="text-primary">Tips del Viajero</h6>
+                            <div class="tips-container text-light-muted">
+                                <p>🌅 <strong>Momento ideal:</strong> Visita al amanecer para las mejores fotos y menos turistas</p>
+                                <p>👗 <strong>Vestimenta:</strong> Respeta el código de vestimenta local y lleva ropa modesta</p>
+                                <p>📸 <strong>Fotografía:</strong> Los trípodes están prohibidos dentro del complejo</p>
+                                <p>🎟️ <strong>Entradas:</strong> Compra los boletos en línea para evitar largas filas</p>
+                                <p>🚶‍♂️ <strong>Recorrido:</strong> Contrata un guía local certificado para conocer la historia completa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kyoto Modal -->
+    <div class="modal fade" id="kyotoModal" tabindex="-1" aria-labelledby="kyotoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-bottom border-secondary">
+                    <h5 class="modal-title text-light" id="kyotoModalLabel">
+                        <span class="destination-badge-sm me-2">🎋</span>
+                        Kioto, Japón
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="destination-details">
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Atracción Principal: Bosque de Bambú de Arashiyama</h6>
+                            <p class="text-light-muted">
+                                Un impresionante bosque de bambú gigante que crea un paisaje único y místico. 
+                                Los tallos de bambú se elevan hacia el cielo creando un túnel natural de luz 
+                                verde filtrada.
+                            </p>
+                        </div>
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Mejor Época para Visitar</h6>
+                            <p class="text-light-muted">
+                                Primavera (marzo-mayo):
+                                <ul class="text-light-muted">
+                                    <li>Temporada de cerezos en flor (sakura)</li>
+                                    <li>Clima suave y agradable</li>
+                                    <li>Festivales tradicionales</li>
+                                    <li>Perfecta iluminación natural</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <h6 class="text-primary">Tips del Viajero</h6>
+                            <div class="tips-container text-light-muted">
+                                <p>⏰ <strong>Horario:</strong> Llega antes de las 7:00 AM para evitar las multitudes</p>
+                                <p>📸 <strong>Fotografía:</strong> Los días nublados ofrecen la mejor luz para fotos</p>
+                                <p>🚂 <strong>Transporte:</strong> Usa el pase JR para llegar a la estación de Arashiyama</p>
+                                <p>👘 <strong>Experiencia:</strong> Alquila un kimono tradicional para la visita</p>
+                                <p>🍜 <strong>Gastronomía:</strong> Prueba el tofu local, especialidad de Arashiyama</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rome Modal -->
+    <div class="modal fade" id="romeModal" tabindex="-1" aria-labelledby="romeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-bottom border-secondary">
+                    <h5 class="modal-title text-light" id="romeModalLabel">
+                        <span class="destination-badge-sm me-2">🏛️</span>
+                        Roma, Italia
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="destination-details">
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Atracción Principal: Coliseo Romano</h6>
+                            <p class="text-light-muted">
+                                El Coliseo es el anfiteatro más grande jamás construido y un símbolo icónico 
+                                del Imperio Romano. Con capacidad para 50,000 espectadores, este monumento del 
+                                siglo I d.C. sigue siendo una maravilla arquitectónica.
+                            </p>
+                        </div>
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Mejor Época para Visitar</h6>
+                            <p class="text-light-muted">
+                                Primavera (abril-mayo) y Otoño (septiembre-octubre):
+                                <ul class="text-light-muted">
+                                    <li>Temperaturas moderadas</li>
+                                    <li>Menos turistas que en verano</li>
+                                    <li>Eventos culturales frecuentes</li>
+                                    <li>Precios más económicos</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <h6 class="text-primary">Tips del Viajero</h6>
+                            <div class="tips-container text-light-muted">
+                                <p>🎫 <strong>Entradas:</strong> Compra el Roma Pass para acceso prioritario y transporte público</p>
+                                <p>⏰ <strong>Horario:</strong> Visita temprano en la mañana o al final de la tarde</p>
+                                <p>👣 <strong>Recorrido:</strong> Reserva un tour guiado para acceder a áreas restringidas</p>
+                                <p>📸 <strong>Fotos:</strong> El mejor ángulo es desde el Monte Palatino</p>
+                                <p>🍝 <strong>Comida:</strong> Evita los restaurantes turísticos cercanos, explora el barrio Monti</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zapatoca Modal -->
+    <div class="modal fade" id="zapatocaModal" tabindex="-1" aria-labelledby="zapatocaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-bottom border-secondary">
+                    <h5 class="modal-title text-light" id="zapatocaModalLabel">
+                        <span class="destination-badge-sm me-2">🌋</span>
+                        Zapatoca, Colombia
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="destination-details">
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Atracción Principal: Cueva del Nitro</h6>
+                            <p class="text-light-muted">
+                                La Cueva del Nitro es una impresionante formación geológica natural que se extiende por más de 
+                                800 metros de profundidad. Conocida por sus fascinantes estalactitas y estalagmitas, además de 
+                                ser hogar de una variada fauna cavernícola.
+                            </p>
+                        </div>
+                        <div class="feature-card mb-4">
+                            <h6 class="text-primary">Mejor Época para Visitar</h6>
+                            <p class="text-light-muted">
+                                Diciembre a Marzo:
+                                <ul class="text-light-muted">
+                                    <li>Temporada seca con menos lluvias</li>
+                                    <li>Temperaturas agradables</li>
+                                    <li>Mejores condiciones para explorar las cuevas</li>
+                                    <li>Festivales locales tradicionales</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <h6 class="text-primary">Tips del Viajero</h6>
+                            <div class="tips-container text-light-muted">
+                                <p>👟 <strong>Calzado:</strong> Usa botas o zapatos con buen agarre y resistentes al agua</p>
+                                <p>🔦 <strong>Equipamiento:</strong> Lleva linterna adicional y baterías de repuesto</p>
+                                <p>👕 <strong>Ropa:</strong> Viste en capas y lleva un cambio de ropa</p>
+                                <p>🎒 <strong>Mochila:</strong> Usa una mochila impermeable para proteger tus pertenencias</p>
+                                <p>🦇 <strong>Fauna:</strong> Respeta los murciélagos y la vida cavernícola</p>
+                                <p>🚶‍♂️ <strong>Guía:</strong> Contrata un guía local certificado, no explores solo</p>
+                                <p>📸 <strong>Fotografía:</strong> Usa una cámara resistente al agua y la humedad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .bg-dark-card {
+            background: #1a1e2b;
+            border: 1px solid #2a2f3f;
+            transition: all 0.3s ease;
+        }
+
+        .hover-card-dark:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: #3498db;
+        }
+
+        .destination-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2em;
+            background: #1a1e2b;
+            padding: 5px 15px;
+            border-radius: 50%;
+            border: 1px solid #2a2f3f;
+        }
+
+        .destination-badge-sm {
+            font-size: 1.2em;
+        }
+
+        .text-light-muted {
+            color: #a0a0a0 !important;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .tips-container p {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .tips-container p:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateX(5px);
+        }
+
+        .modal-content {
+            border: 1px solid #2a2f3f;
+        }
+
+        .btn-outline-primary {
+            border-color: #3498db;
+            color: #3498db;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Video Section -->
+ <div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-4 fw-bold text-light">Descubre Nuestros Destinos</h2>
+            <div class="ratio ratio-16x9 shadow-lg rounded overflow-hidden hover-scale">
+                <video controls class="video-element">
+                    <source src="IMAGENES/avatar.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
